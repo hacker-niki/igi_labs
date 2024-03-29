@@ -22,7 +22,7 @@ def my_decorator(func):
 
 def compute_factorial(n):
     """
-    Функция для вычисления факториала числа n.
+A function for calculating the factorial of the number n.
     """
     factorial = 1
 
@@ -37,7 +37,7 @@ def compute_factorial(n):
 
 def compute_power(base, exponent):
     """
-    Функция для возведения числа base в степень exponent.
+A function for raising the base number to exponent.
     """
     return base ** exponent
 
@@ -69,10 +69,12 @@ def main():
         math_result = math.acos(x)
 
         print("\nРезультаты:")
-        print("Значение аргумента (x):", x)
-        print("Значение функции arccos(x):", result)
-        print("Количество просуммированных членов ряда (n):", n)
-        print("Значение функции arccos(x) с помощью math:", math_result)
+        print(
+            f"Значение аргумента (x):{x:<10} Значение функции arccos(x):{result:<20}"
+            f"Количество просуммированных членов ряда (n):{n:<10} Значение функции arccos(x) с помощью math: {math_result:<20}")
+        # print("Значение функции arccos(x):", result)
+        # print("Количество просуммированных членов ряда (n):", n)
+        # print("Значение функции arccos(x) с помощью math:", math_result)
 
         choice = input("\nХотите продолжить? (Да/Нет): ")
         if choice.lower() == "нет" or choice.lower() == "no" or choice.lower() == "n" or choice.lower() == "н":

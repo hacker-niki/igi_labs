@@ -1,6 +1,6 @@
 def print_menu():
     """
-    Функция для печати меню.
+    A function for printing menus.
     """
     print("Выберите задачу:")
     print("1. Вычисление значения функции arccos(x)")

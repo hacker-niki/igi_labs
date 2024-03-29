@@ -1,7 +1,7 @@
 def is_valid_number(n) -> bool:
     """
-    Функция для проверки валидности числа n.
-    Возвращает True, если n является неотрицательным целым числом, и False в противном случае.
+A function to check the validity of the number n.
+    Returns True if n is a non-negative integer, and False otherwise.
     """
     try:
         n = int(n)
@@ -14,8 +14,8 @@ def is_valid_number(n) -> bool:
 
 def is_valid_float(n) -> bool:
     """
-    Функция для проверки валидности числа n.
-    Возвращает True, если n является неотрицательным целым числом, и False в противном случае.
+A function to check the validity of the number n.
+    Returns True if n is a non-negative integer, and False otherwise.
     """
     try:
         n = float(n)

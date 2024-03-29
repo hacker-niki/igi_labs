@@ -5,7 +5,7 @@
 
 def analyze_text(text):
     """
-    Функция для анализа текста и подсчета количества пробелов, цифр и знаков пунктуации.
+    A function for analyzing text and counting the number of spaces, numbers and punctuation marks.
     """
     space_count = 0
     digit_count = 0

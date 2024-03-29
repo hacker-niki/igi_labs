@@ -9,8 +9,8 @@ import inputGenerators
 
 def validate_list(lst):
     """
-    Функция для проверки корректности введенных данных.
-    Проверяет, что список не пустой и содержит хотя бы два ненулевых элемента.
+A function to check the correctness of the entered data.
+    Checks that the list is not empty and contains at least two non-zero elements.
     """
 
     if len(lst) < 2:
@@ -28,9 +28,9 @@ def validate_list(lst):
 
 def process_list(lst):
     """
-    Функция для выполнения основного задания с выводом результатов.
-    Находит номер максимального элемента списка и произведение элементов,
-    расположенных между первым и вторым ненулевыми элементами.
+A function for performing the main task with the output of the results.
+    Finds the number of the maximum list item and the product of the items,
+    located between the first and second non-zero elements.
     """
     max_index = lst.index(max(lst))
 
@@ -55,7 +55,7 @@ def process_list(lst):
 
 def print_list(lst):
     """
-    Функция для вывода списка на экран.
+A function for displaying a list on the screen.
     """
     print("Список:")
     for num in lst:

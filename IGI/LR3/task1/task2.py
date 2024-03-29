@@ -8,8 +8,8 @@ import inputGenerators
 
 def multiply_last_digits():
     """
-    Функция для нахождения суммы последовательности чисел,
-    умножающихся на их последние цифры.
+    A function for finding the sum of a sequence of numbers,
+    multiplied by their last digits.
     """
     total = 0
 
