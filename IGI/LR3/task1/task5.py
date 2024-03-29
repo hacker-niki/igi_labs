@@ -4,23 +4,7 @@
 # Date: 14.03.24
 
 import check
-
-
-def input_list():
-    """
-    Функция для ввода элементов списка пользователем.
-    """
-    print("Введите элементы списка (целые числа), каждый элемент на новой строке.")
-    print("Для завершения ввода введите пустую строку.")
-
-    lst = []
-    while True:
-        value = check.valid_number_enter_input("Введите элемент списка: ")
-        if not value[0]:
-            break
-        lst.append(value[1])
-
-    return lst
+import inputGenerators
 
 
 def validate_list(lst):
@@ -28,6 +12,7 @@ def validate_list(lst):
     Функция для проверки корректности введенных данных.
     Проверяет, что список не пустой и содержит хотя бы два ненулевых элемента.
     """
+
     if len(lst) < 2:
         return False
 
@@ -78,7 +63,10 @@ def print_list(lst):
 
 
 def main():
-    lst = input_list()
+    print("Введите элементы списка (целые числа), каждый элемент на новой строке.")
+    print("Для завершения ввода введите пустую строку.")
+
+    lst = list(inputGenerators.input_list())
     print_list(lst)
 
     if not validate_list(lst):

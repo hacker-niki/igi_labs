@@ -10,6 +10,16 @@ default_eps = 1e-6
 default_max_iterations = 500
 
 
+def my_decorator(func):
+    def wrapper(*args, **kwargs):
+        res = func(*args, **kwargs)
+        print("args:", args)
+        print("result:", res)
+        return res
+
+    return wrapper
+
+
 def compute_factorial(n):
     """
     Функция для вычисления факториала числа n.
@@ -32,24 +42,21 @@ def compute_power(base, exponent):
     return base ** exponent
 
 
+@my_decorator
 def arccos_series(x, eps=default_eps, max_iterations=default_max_iterations):
     """
-    Функция для вычисления значения функции arccos(x)
-    с помощью разложения в степенной ряд.
+    Function to compute the value of arccos(x) using power series expansion.
     """
-    result = 0.0
+    result = math.pi / 2
     n = 0
-
-    while True:
-        numerator = compute_factorial(2 * n)
-        denominator = (4 ** n) * (compute_factorial(n) ** 2) * (2 * n + 1)
-        term = (numerator / denominator) * compute_power(x, 2 * n + 1)
-
-        if n > max_iterations or abs(term) < eps:
-            break
-
-        result += term
+    while n <= max_iterations:
+        prev = result
+        result -= compute_factorial(2 * n) / (compute_power(compute_factorial(2 * n), 2)) / (2 * n + 1) * compute_power(
+            x, 2 * n + 1)
         n += 1
+
+        if abs(prev - result) < eps:
+            break
 
     return result, n
 

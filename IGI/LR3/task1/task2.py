@@ -3,7 +3,7 @@
 # Developed by Nikita Senko
 # Date: 14.03.24
 
-import check
+import inputGenerators
 
 
 def multiply_last_digits():
@@ -13,12 +13,7 @@ def multiply_last_digits():
     """
     total = 0
 
-    while True:
-        number = check.valid_float_input("Введите целое число (0 для окончания): ")
-
-        if number == 0:
-            break
-
+    for number in inputGenerators.generate_int_input():
         last_digit = abs(number) % 10
         total += number * last_digit
 
