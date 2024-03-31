@@ -11,11 +11,11 @@ def multiply_last_digits():
     A function for finding the sum of a sequence of numbers,
     multiplied by their last digits.
     """
-    total = 0
+    total = 1
 
     for number in inputGenerators.generate_int_input():
         last_digit = abs(number) % 10
-        total += number * last_digit
+        total *= last_digit
 
     return total
 

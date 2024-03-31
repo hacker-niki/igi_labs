@@ -33,19 +33,22 @@ A function for counting the repetitions of each character in the text.
     return counts
 
 
-def extract_words_before_comma(text):
+def extract_words_after_comma(string):
     """
 A function for extracting words before the comma and displaying them in alphabetical order.
     """
-    words = []
+    # Split the string into a list of words.
+    words = string.split()
 
-    for word in text.split():
-        if word.endswith(","):
-            words.append(word.strip(","))
+    ans = []
 
-    words_before_comma = sorted(words)
+    for x in words:
+        if x.endswith(','):
+            if words.index(x) < len(words) - 2:
+                ans.append(words[words.index(x) + 1])
 
-    return words_before_comma
+    # Return the words after the comma.
+    return ans
 
 
 def main():
@@ -69,8 +72,8 @@ def main():
         print(f"{char}: {count}")
 
     # в) Вывести в алфавитном порядке слова, идущие перед запятой
-    words_after_comma = extract_words_before_comma(text)
-    print("Слова, идущие перед запятой в алфавитном порядке:")
+    words_after_comma = extract_words_after_comma(text)
+    print("Слова, идущие после запятой в алфавитном порядке:")
     for word in sorted(words_after_comma):
         print(word)
 
