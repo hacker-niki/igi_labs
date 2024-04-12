@@ -14,3 +14,9 @@ class Task:
 
     def start_task(self):
         print('You need to choose task to demostrate')
+
+
+class TaskMixin:
+    def info(self):
+        print("Запущен ", self.__class__.__name__)
+        print("Основан на ", self.__class__.__base__.__name__)

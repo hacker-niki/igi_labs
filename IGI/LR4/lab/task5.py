@@ -11,7 +11,7 @@ import input_check
 import repeat
 
 
-class Task5(TaskClass.Task):
+class Task5(TaskClass.Task, TaskClass.TaskMixin):
 
     def __init__(self, task):
         """Функция, инициализирующая объект класса."""

@@ -107,7 +107,7 @@ class Trapezoid(GeometricFigure):
         return 'Площадь: {}\nЦвет: {}'.format(self.square(), str(self.color_))
 
 
-class Task4(TaskClass.Task):
+class Task4(TaskClass.Task, TaskClass.TaskMixin):
     def __init__(self, task):
         """Функция, инициализирующая объект класса."""
         super().__init__(task)

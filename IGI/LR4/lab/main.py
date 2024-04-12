@@ -24,6 +24,7 @@ def main():
         if task == 6:
             rep = False
         else:
+            tasks[task - 1](task).info()
             tasks[task - 1](task).start_task()
             rep = repeat.repeat()
 

@@ -6,12 +6,13 @@
 # Date: 14.03.24
 
 import re
+import zipfile
 
 import TaskClass
 import repeat
 
 
-class Task2(TaskClass.Task):
+class Task2(TaskClass.Task, TaskClass.TaskMixin):
     filename = 'task2.txt'
     text = ''
 
@@ -103,6 +104,8 @@ class Task2(TaskClass.Task):
 
             file.write(' '.join([word for word in self.text.split() if not word.lower().startswith('a')]) + "\n")
             file.close()
+            with zipfile.ZipFile('task2_results.zip', 'w') as zip_file:
+                zip_file.write('task2_results.txt', arcname='task2_results.txt')
 
     def find_sentence_count(self):
         """Функция, подсчитывающая количество предложений в тексте."""

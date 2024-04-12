@@ -13,7 +13,7 @@ from datetime import date
 
 import input_check
 import repeat
-from TaskClass import Task
+from TaskClass import Task, TaskMixin
 
 
 class Student:
@@ -35,14 +35,19 @@ class SchoolClass:
 
     def calculate_average_birthday(self):
         total_days = 0
+        total_months = 0
+        total_years = 0
 
         for student in self.students:
-            total_days += (date.today() - student.birthdate).days
+            total_days += date.fromisoformat(str(student.birthdate)).day
+            total_years += date.fromisoformat(str(student.birthdate)).year
+            total_months += date.fromisoformat(str(student.birthdate)).month
 
         average_days = total_days / len(self.students)
-        average_birthday = date.today() - datetime.timedelta(days=average_days)
+        average_yars = total_years / len(self.students)
+        average_months = total_months / len(self.students)
 
-        return average_birthday
+        return datetime.date(year=int(average_yars), month=int(average_months), day=int(average_days))
 
     def get_student(self, student_surname, student_initials):
         for student in self.students:
@@ -52,7 +57,7 @@ class SchoolClass:
         return Student("Not found", "Not found", datetime.date.today())
 
 
-class Task1(Task):
+class Task1(Task, TaskMixin):
 
     def __init__(self, task):
         """Функция, инициализирующая объект класса."""
@@ -72,7 +77,6 @@ class Task1(Task):
     def start_task(self):
         """Функция, выполняющая основное задание."""
         while True:
-            self.curr_task(self.current_task)
 
             if input_check.int_check('Read from:\n'
                                      '1. pickle\n'
@@ -102,7 +106,10 @@ class Task1(Task):
                         print(student)
                     surname = input('Enter student surname: ')
                     initials = input('Enter student initials: ')
-                    print(self.schoolClass.get_student(surname, initials))
+                    if self.schoolClass.get_student(surname, initials).surname != "Not found":
+                        print(self.schoolClass.get_student(surname, initials))
+                    else:
+                        print("Student not found")
                 elif var == 3:
                     print(self.schoolClass.calculate_average_birthday())
                 elif var == 4:
