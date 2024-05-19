@@ -3,7 +3,6 @@
 # Developed by Nikita Senko
 # Date: 14.03.24
 
-import check
 import inputGenerators
 
 
