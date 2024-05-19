@@ -135,7 +135,7 @@ class Task2(TaskClass.Task, TaskClass.TaskMixin):
         return re.findall(r'([A-Z][^.!?]*[.!?])', self.text)
 
     def is_valid_date(self, string):
-        pattern = r"^(0[1-9]|[12][0-9]|3[01]).(0[1-9]|1[0-2]).((?:1[6-9]|[2-9]\d)\d{2}|9999)$"
+        pattern = r"^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/((?:1[6-9]|[2-9]\d)\d{2}|9999)$"
         if re.match(pattern, string) is not None:
             return True
         else:

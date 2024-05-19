@@ -1,11 +1,11 @@
 Общее задание
 
-Количество предложений в тексте: 14
+Количество предложений в тексте: 12
 	Из них:
-	Повествовательные: 10
+	Повествовательные: 8
 	Побудительные: 2
 	Вопросительные: 2
-	Средняя длина предложения: 48.0
+	Средняя длина предложения: 56.0
 	Средняя длина слова: 4.63448275862069
 	Количество смайликов в тексте: 4
 
@@ -29,11 +29,10 @@ These methods are applicable for 2016\2019\mac\online versions.
 Количество строчных букв:630
 
 Правильные даты:
-12.12.1601
-12.02.2024
+12/12/1601
 
 Найти первое слово, содержащее букву 'z' и его номер
 Первое слово с буквой 'z':analyzes
 Номер слова:4
 Вывести строку, исключив из нее слова, начинающиеся с 'a':
-1234 Excel stores data of types.:)) Most of the data consists of dates. Dates presented in numeric form in excel worksheet by default. Excel users can convert this kind of dates in text manually. This (-):-][ method is for data consisting of limited of dates? If the data consists of multiple dates, then it becomes very for 2004 excel users to convert it in text! Excel has solved this problem of the users by installing unique feature of converting numeric dates in text! This feature includes certain methods techniques;[ which can easily convert the numeric date present in your data)):) in text form? In this we will discuss such methods which will enable the users to convert date into text. These methods for 2016\2019\mac\online versions. 12.12.1601 12.02.2024
+1234 Excel stores data of types.:)) Most of the data consists of dates. Dates presented in numeric form in excel worksheet by default. Excel users can convert this kind of dates in text manually. This (-):-][ method is for data consisting of limited of dates? If the data consists of multiple dates, then it becomes very for 2004 excel users to convert it in text! Excel has solved this problem of the users by installing unique feature of converting numeric dates in text! This feature includes certain methods techniques;[ which can easily convert the numeric date present in your data)):) in text form? In this we will discuss such methods which will enable the users to convert date into text. These methods for 2016\2019\mac\online versions. 12/12/1601 12.02.2024

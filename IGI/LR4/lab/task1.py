@@ -102,7 +102,7 @@ class Task1(Task, TaskMixin):
                     date_day = input_check.int_check("Enter student's date of birth (day): ")
                     self.schoolClass.add_student(Student(surname, initials, date(date_year, date_month, date_day)))
                 elif var == 2:
-                    for student in self.schoolClass.students:
+                    for student in sorted(self.schoolClass.students, key=lambda student: student.surname):
                         print(student)
                     surname = input('Enter student surname: ')
                     initials = input('Enter student initials: ')

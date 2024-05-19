@@ -92,7 +92,7 @@ class Trapezoid(GeometricFigure):
             plt.legend('', frameon=False)
 
             plt.plot(x, y)
-            plt.fill(x, y, alpha=0.3)
+            plt.fill(x, y, alpha=0.2, facecolor=self.color_.color_init)
 
             plt.title(str(self.name_) + " площадь " + str(self.square()))
             plt.grid(True)

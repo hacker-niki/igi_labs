@@ -94,8 +94,8 @@ class Task3(TaskClass.Task, TaskClass.TaskMixin):
         ax.legend(loc='lower left')
         ax.set_xlabel('X')
         ax.set_ylabel('Y')
-        ax.text(-1.05, -2.3, 'Демонстрация графиков, полученных\nпо Тейлору и с помощью модуля Math')
-        ax.annotate('Точка, с которой начинается разложение по Тейлору', xy=(0, 0), xytext=(-0.75, 0.75),
-                    arrowprops=dict(facecolor='black', shrink=0.01))
+        # ax.text(-1.05, -2.3, 'Демонстрация графиков, полученных\nпо Тейлору и с помощью модуля Math')
+        # ax.annotate('Точка, с которой начинается разложение по Тейлору', xy=(0, 0), xytext=(-0.75, 0.75),
+        #             arrowprops=dict(facecolor='black', shrink=0.01))
         plt.savefig('task3.png')
         plt.show()
