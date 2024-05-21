@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Shop</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+{% block top_navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Pizza Shop</a>
+    </nav>
+
+    <nav class="navbar navbar-expand-md fixed-top">
+        <div class="container">
+
+            <a class="navbar-brand border rounded border-white"
+               href="{% url 'pizza:homepage' %}">Пиццерия</a>
+            <button class="navbar-toggler " type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                {# left_side_nav_links #}
+{#                <ul class="navbar-nav mr-auto">#}
+{#                    {% if request.user.is_authenticated %}#}
+{#                        <li class="nav-item active">#}
+{#                            <a class="nav-link" href="{% url 'workshop:create_pizza' %}">Create#}
+{#                                a new pizza<span#}
+{#                                        class="sr-only">(current)</span></a>#}
+{#                        </li>#}
+{#                    {% endif %}#}
+{#                </ul>#}
+                {# /left_side_nav_links #}
+
+
+                {# right_side_nav_links #}
+                {% if request.user.is_authenticated %}
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link">Welcome {{ request.user }}</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'registration:logout' %}">Logout</a>
+                        </li>
+                    </ul>
+
+                {% else %}
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'registration:login' %}">Login/register</a>
+                        </li>
+                    </ul>
+                {% endif %}
+                {# /right_side_nav_links #}
+
+            </div>
+        </div>
+    </nav>
+
+{% endblock top_navbar %}
+
+{% block content %}{% endblock %}
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

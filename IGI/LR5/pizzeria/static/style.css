@@ -1,0 +1,35 @@
+body {
+    background-color: #ff0000; /* Communist red background */
+    color: #fff; /* White text */
+}
+
+.container {
+    padding-top: 20px;
+}
+
+.card {
+    background-color: #990000; /* Darker red for contrast */
+    border: none;
+}
+
+.card-title, .card-text {
+    color: #fff;
+}
+
+.navbar {
+    background-color: #cc0000; /* Slightly different red for navbar */
+}
+
+.navbar-brand {
+    color: #fff;
+}
+
+.navbar-brand:hover {
+    color: #ffcc00; /* Goldish yellow on hover */
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}

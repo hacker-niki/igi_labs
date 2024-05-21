@@ -1,0 +1,14 @@
+{% extends 'form_base.html' %}
+
+{% block form %}
+
+  <h1 class="display-2 mt-5">Create your account!</h1>
+  <h5 class="mb-5"><a href="{% url 'registration:login' %}">or Login</a></h5>
+
+  <form method="POST" class="mb-5">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="button-primary" value="Create">
+  </form>
+
+{% endblock form %}
