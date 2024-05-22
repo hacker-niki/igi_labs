@@ -2,13 +2,33 @@
 
 {% block form %}
 
-  <h1 class="display-2 mt-5">Create your account!</h1>
-  <h5 class="mb-5"><a href="{% url 'registration:login' %}">or Login</a></h5>
+    <h1 class="display-2 mt-5">Create your account!</h1>
+    <h5 class="mb-5"><a href="{% url 'registration:login' %}">or Login</a></h5>
 
-  <form method="POST" class="mb-5">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class="button-primary" value="Create">
-  </form>
+    <form method="POST" class="mb-5">
+        {% csrf_token %}
+
+        <p>
+            {{ form.username.label_tag }}
+            {{ form.username }}
+        </p>
+
+        <p>
+            {{ form.email.label_tag }}
+            {{ form.email }}
+        </p>
+
+        <p>
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+        </p>
+
+        <p>
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+        </p>
+
+        <input type="submit" class="button-primary" value="Create"/>
+    </form>
 
 {% endblock form %}

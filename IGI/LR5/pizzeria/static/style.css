@@ -20,11 +20,15 @@ body {
     background-color: #cc0000; /* Slightly different red for navbar */
 }
 
-.navbar-brand {
+.navbar-brand, .navbar-toggler, .nav-link, a {
     color: #fff;
 }
 
-.navbar-brand:hover {
+.navbar-brand {
+    font-size: xx-large;
+}
+
+.navbar-brand:hover, .nav-link:hover, a:hover {
     color: #ffcc00; /* Goldish yellow on hover */
 }
 

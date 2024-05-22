@@ -12,16 +12,12 @@
 <body>
 
 {% block top_navbar %}
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">Pizza Shop</a>
-    </nav>
 
-    <nav class="navbar navbar-expand-md fixed-top">
+    <nav class="navbar navbar-expand-md sticky-top">
         <div class="container">
 
-            <a class="navbar-brand border rounded border-white"
-               href="{% url 'pizza:homepage' %}">Пиццерия</a>
-            <button class="navbar-toggler " type="button" data-toggle="collapse"
+            <a class="navbar-brand" href="{% url 'pizza:homepage' %}">Пиццерия</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -31,36 +27,33 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 {# left_side_nav_links #}
-{#                <ul class="navbar-nav mr-auto">#}
-{#                    {% if request.user.is_authenticated %}#}
-{#                        <li class="nav-item active">#}
-{#                            <a class="nav-link" href="{% url 'workshop:create_pizza' %}">Create#}
-{#                                a new pizza<span#}
-{#                                        class="sr-only">(current)</span></a>#}
-{#                        </li>#}
-{#                    {% endif %}#}
-{#                </ul>#}
+                {#                <ul class="navbar-nav mr-auto">#}
+                {#                    {% if request.user.is_authenticated %}#}
+                {#                        <li class="nav-item active">#}
+                {#                            <a class="nav-link" href="{% url 'workshop:create_pizza' %}">Create#}
+                {#                                a new pizza<span#}
+                {#                                        class="sr-only">(current)</span></a>#}
+                {#                        </li>#}
+                {#                    {% endif %}#}
+                {#                </ul>#}
                 {# /left_side_nav_links #}
 
 
                 {# right_side_nav_links #}
-                {% if request.user.is_authenticated %}
-                    <ul class="navbar-nav">
+                <ul class="navbar-nav ml-auto">  <!-- Added ml-auto for right alignment -->
+                    {% if request.user.is_authenticated %}
                         <li class="nav-item active">
                             <a class="nav-link">Welcome {{ request.user }}</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="{% url 'registration:logout' %}">Logout</a>
                         </li>
-                    </ul>
-
-                {% else %}
-                    <ul class="navbar-nav">
+                    {% else %}
                         <li class="nav-item active">
                             <a class="nav-link" href="{% url 'registration:login' %}">Login/register</a>
                         </li>
-                    </ul>
-                {% endif %}
+                    {% endif %}
+                </ul>
                 {# /right_side_nav_links #}
 
             </div>
