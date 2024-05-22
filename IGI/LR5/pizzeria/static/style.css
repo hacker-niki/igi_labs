@@ -24,6 +24,18 @@ body {
     color: #fff;
 }
 
+.btn-primary, .btn-primary:visited {
+    border-color: #ffcc00;
+    background-color: #cc0000;
+    color: #fff;
+}
+
+.btn-primary:hover, .btn-primary:visited:hover {
+    background-color: #ffcc00;
+    border-color: #cc0000;
+    color: #fff;
+}
+
 .navbar-brand {
     font-size: xx-large;
 }

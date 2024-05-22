@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Заказ подтвержден</h1>
+    <p>Вы успешно заказали пиццу: {{ pizza.name }}.</p>
+    <a href="{% url 'pizza:homepage' %}" class="btn btn-primary">Вернуться к списку пицц</a>
+</div>
+{% endblock %}

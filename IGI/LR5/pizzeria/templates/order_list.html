@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% for order in orders %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title" align="center">Заказ №{{ order.id }}</h5>
+                            <p class="card-text"><strong>Клиент:</strong> {{ order.client.username }}</p>
+                            <p class="card-text"><strong>Пицца:</strong> {{ order.pizza.name }}</p>
+                            <p class="card-text"><strong>Количество:</strong> {{ order.quantity }}</p>
+                            <p class="card-text"><strong>Общая цена:</strong> ${{ order.total_price }}</p>
+                            <p class="card-text"><strong>Курьер:</strong> {{ order.courier.username }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
