@@ -1,0 +1,15 @@
+{% extends 'base_blog.html' %}
+
+
+
+{% block content %}
+    <div class="container text-center">
+        {% if latest_post %}
+            <h1>{{ latest_post.title }}</h1>
+            <p>{{ latest_post.content|truncatewords:50 }}</p>
+            {#        <a href="{% url 'blog:post_detail' latest_post.pk %}">Читать далее</a>#}
+        {% else %}
+            <p>No posts available.</p>
+        {% endif %}
+    </div>
+{% endblock %}

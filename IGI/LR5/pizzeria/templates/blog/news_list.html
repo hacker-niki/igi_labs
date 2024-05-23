@@ -1,0 +1,19 @@
+{% extends 'base_blog.html' %}
+
+{% block content %}
+    <div class="container text-center">
+        <h1>Новости</h1>
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <h2>{{ post.title }}</h2>
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                    {% endif %}
+                    <p>{{ post.content|truncatewords:20 }}</p>
+                    {#        <a href="{% url 'blog:post_detail' post.pk %}">Читать далее</a>#}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

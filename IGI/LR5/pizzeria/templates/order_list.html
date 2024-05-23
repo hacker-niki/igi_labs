@@ -1,38 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Order List</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Client</th>
-        <th>Pizza</th>
-        <th>Quantity</th>
-        <th>Total Price</th>
-        <th>Created At</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for order in orders %}
+    <h1>Order List</h1>
+    <table>
+        <thead>
         <tr>
-          <td>{{ order.id }}</td>
-          <td>{{ order.client.username }}</td>
-          <td>{{ order.pizza.name }}</td>
-          <td>{{ order.quantity }}</td>
-          <td>{{ order.total_price }}</td>
-          <td>{{ order.created_at }}</td>
-          <td>{{ order.status }}</td>
-          <td>
-            <a href="{% url 'pizza:order_detail' order.id %}">View</a>
-            {% if not order.status %}
-              <a href="{% url 'pizza:finish_order' order.id %}">Finish Order</a>
-            {% endif %}
-          </td>
+            <th>ID</th>
+            <th>Client</th>
+            <th>Pizza</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+            <th>Created At</th>
+            <th>Status</th>
+            <th>Actions</th>
         </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.client.username }}</td>
+                <td>{{ order.pizza.name }}</td>
+                <td>{{ order.quantity }}</td>
+                <td>{{ order.total_price }}</td>
+                <td>{{ order.created_at }}</td>
+                <td>{{ order.status }}</td>
+                <td>
+                    <a href="{% url 'pizza:order_detail' order.id %}">View</a>
+                    {% if not order.status %}
+                        <a href="{% url 'pizza:finish_order' order.id %}">Finish Order</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

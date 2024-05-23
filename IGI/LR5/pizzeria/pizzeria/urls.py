@@ -24,5 +24,6 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', include('pizza.urls')),
                   path('user/', include('registration.urls')),
+                  path('blog/', include('blog.urls'))
                   # path('media', )
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

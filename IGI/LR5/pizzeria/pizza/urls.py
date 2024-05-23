@@ -1,7 +1,7 @@
 from django.urls import path
 
 from . import views
-from .views import order_list, order_detail
+from .views import order_list
 
 app_name = 'pizza'
 

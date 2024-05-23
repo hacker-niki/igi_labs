@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('pizza', '0004_promocode_remove_order_user_and_more'),
     ]

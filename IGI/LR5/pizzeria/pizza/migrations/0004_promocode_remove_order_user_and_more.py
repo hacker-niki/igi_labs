@@ -7,7 +7,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('pizza', '0003_alter_pizza_image'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
@@ -46,13 +45,15 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='order',
             name='client',
-            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, related_name='client_orders', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE,
+                                    related_name='client_orders', to=settings.AUTH_USER_MODEL),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='order',
             name='courier',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='courier_orders', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL,
+                                    related_name='courier_orders', to=settings.AUTH_USER_MODEL),
         ),
         migrations.AddField(
             model_name='order',

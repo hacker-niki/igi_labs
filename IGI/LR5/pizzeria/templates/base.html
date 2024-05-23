@@ -34,10 +34,10 @@
                             <a class="nav-link" href="{% url 'pizza:order_list' %}">Заказы</a>
                         </li>
                     {% endif %}
-
                     {% if request.user.is_authenticated %}
                         <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'registration:user_profile' %}">Welcome {{ request.user }}</a>
+                            <a class="nav-link"
+                               href="{% url 'registration:user_profile' %}">Welcome {{ request.user }}</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="{% url 'registration:logout' %}">Logout</a>
@@ -47,6 +47,12 @@
                             <a class="nav-link" href="{% url 'registration:login' %}">Login/register</a>
                         </li>
                     {% endif %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'blog:home' %}">Домашняя</a>
+                    </li>
+                    {% block navbar %}
+
+                    {% endblock navbar %}
                 </ul>
                 {# /right_side_nav_links #}
 
