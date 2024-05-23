@@ -6,7 +6,7 @@ class Pizza(models.Model):
     name = models.CharField(max_length=100)
     sauce = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    category = models.CharField(max_length=100)
+    # category = models.CharField(max_length=100)
     image = models.ImageField(upload_to='media/pizza/')
 
     def __str__(self):
@@ -20,9 +20,15 @@ class Order(models.Model):
     total_price = models.DecimalField(max_digits=8, decimal_places=2)
     courier = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='courier_orders', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=False, null=True, blank=True)
+    status = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Order {self.id} by {self.client.username}"
+
+    def save(self, *args, **kwargs):
+        self.total_price = self.quantity * self.pizza.price
+        super().save(*args, **kwargs)
 
 
 class PromoCode(models.Model):

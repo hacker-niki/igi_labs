@@ -3,7 +3,9 @@
 {% block content %}
 <div class="container">
     <h1>Заказ подтвержден</h1>
-    <p>Вы успешно заказали пиццу: {{ pizza.name }}.</p>
-    <a href="{% url 'pizza:homepage' %}" class="btn btn-primary">Вернуться к списку пицц</a>
+    <p>Вы успешно заказали пиццу: {{ order.pizza.name }}.</p>
+    <p>Количество: {{ order.quantity }}</p>
+    <p>Общая цена: ${{ order.total_price }}</p>
+    <a href="{% url 'pizza:pizza_list' %}" class="btn btn-primary">Вернуться к списку пицц</a>
 </div>
 {% endblock %}

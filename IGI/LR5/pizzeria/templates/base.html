@@ -26,24 +26,18 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                {# left_side_nav_links #}
-                {#                <ul class="navbar-nav mr-auto">#}
-                {#                    {% if request.user.is_authenticated %}#}
-                {#                        <li class="nav-item active">#}
-                {#                            <a class="nav-link" href="{% url 'workshop:create_pizza' %}">Create#}
-                {#                                a new pizza<span#}
-                {#                                        class="sr-only">(current)</span></a>#}
-                {#                        </li>#}
-                {#                    {% endif %}#}
-                {#                </ul>#}
-                {# /left_side_nav_links #}
-
 
                 {# right_side_nav_links #}
                 <ul class="navbar-nav ml-auto">  <!-- Added ml-auto for right alignment -->
+                    {% if request.user.is_staff %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'pizza:order_list' %}">Заказы</a>
+                        </li>
+                    {% endif %}
+
                     {% if request.user.is_authenticated %}
                         <li class="nav-item active">
-                            <a class="nav-link" href="">Welcome {{ request.user }}</a>
+                            <a class="nav-link" href="{% url 'registration:user_profile' %}">Welcome {{ request.user }}</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="{% url 'registration:logout' %}">Logout</a>

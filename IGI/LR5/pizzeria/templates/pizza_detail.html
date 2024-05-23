@@ -15,7 +15,9 @@
                             <img class="card-img-top" src="{{ pizza.image.url }}" alt="{{ pizza.name }}">
                         {% endif %}
                         {% if request.user.is_staff %}
+                            <div class="text-center mt-3">
                             <a href="{% url 'pizza:pizza_edit' pizza.id %}" class="btn btn-primary">Редактировать</a>
+                            </div>
                         {% endif %}
                     </div>
                 </div>

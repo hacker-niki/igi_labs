@@ -1,8 +1,8 @@
 # pizza/views.py
+from datetime import timezone, datetime
 
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from django.db.models import Count, Sum
+from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render
 
@@ -56,9 +56,10 @@ def pizza_create(request):
 @login_required
 def order_pizza(request, pizza_id):
     pizza = get_object_or_404(Pizza, id=pizza_id)
-    # Implement your order logic here (e.g., create an Order object)
-    # For now, let's redirect to a dummy confirmation page
-    return render(request, 'order_confirmation.html', {'pizza': pizza})
+    quantity = 1  # Assume a default quantity for simplicity, you might want to modify this
+    total_price = quantity * pizza.price
+    order = Order.objects.create(client=request.user, pizza=pizza, quantity=quantity, total_price=total_price)
+    return render(request, 'order_confirmation.html', {'order': order})
 
 
 @login_required
@@ -75,15 +76,6 @@ def pizza_edit(request, pizza_id):
 
 
 @login_required
-def order_list(request):
-    if request.user.is_staff:
-        orders = Order.objects.all()
-    else:
-        orders = Order.objects.filter(client=request.user)
-    return render(request, 'order_list.html', {'orders': orders})
-
-
-@login_required
 def order_create(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
@@ -96,30 +88,6 @@ def order_create(request):
     else:
         form = OrderForm()
     return render(request, 'order_form.html', {'form': form})
-
-
-@login_required
-def client_orders_count(request):
-    if request.user.is_staff:
-        clients_orders = User.objects.annotate(order_count=Count('order')).filter(order_count__gt=0)
-    else:
-        clients_orders = None
-    return render(request, 'client_orders_count.html', {'clients_orders': clients_orders})
-
-
-@login_required
-def courier_total_sales(request):
-    if request.user.is_staff:
-        couriers_sales = User.objects.annotate(total_sales=Sum('deliveries__total_price')).filter(total_sales__gt=0)
-    else:
-        couriers_sales = None
-    return render(request, 'courier_total_sales.html', {'couriers_sales': couriers_sales})
-
-
-@login_required
-def promo_code_list(request):
-    promo_codes = PromoCode.objects.filter(is_active=True)
-    return render(request, 'promo_code_list.html', {'promo_codes': promo_codes})
 
 
 @login_required
@@ -139,3 +107,28 @@ def pizza_search(request):
     sauce = request.GET.get('sauce')
     if sauce:
         pizzas = Pizza.objects
+
+
+def staff_required(user):
+    return user.is_staff
+
+
+@user_passes_test(staff_required)
+def order_list(request):
+    orders = Order.objects.all().order_by('-created_at')
+    return render(request, 'order_list.html', {'orders': orders})
+
+
+@user_passes_test(staff_required)
+def order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    return render(request, 'order_detail.html', {'order': order})
+
+
+@user_passes_test(staff_required)
+def finish_order(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    order.status = True
+    order.updated_at = datetime.now()
+    order.save()
+    return redirect('pizza:order_list')

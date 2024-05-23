@@ -1,34 +1,40 @@
-{% extends 'form_base.html' %}
+{% extends "form_base.html" %}
 
-{% block form %}
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h2>Регистрация</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" novalidate>
+                            {% csrf_token %}
 
-    <h1 class="display-2 mt-5">Create your account!</h1>
-    <h5 class="mb-5"><a href="{% url 'registration:login' %}">or Login</a></h5>
+                            {% if form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    {{ form.non_field_errors }}
+                                </div>
+                            {% endif %}
 
-    <form method="POST" class="mb-5">
-        {% csrf_token %}
+                            {% for field in form %}
+                                <div class="mb-3">
+                                    {{ field.label_tag }}
+                                    {{ field }}
+                                    {% if field.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ field.errors|striptags }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
 
-        <p>
-            {{ form.username.label_tag }}
-            {{ form.username }}
-        </p>
-
-        <p>
-            {{ form.email.label_tag }}
-            {{ form.email }}
-        </p>
-
-        <p>
-            {{ form.password1.label_tag }}
-            {{ form.password1 }}
-        </p>
-
-        <p>
-            {{ form.password2.label_tag }}
-            {{ form.password2 }}
-        </p>
-
-        <input type="submit" class="button-primary" value="Create"/>
-    </form>
-
-{% endblock form %}
+                            <button type="submit" class="btn btn-primary w-100">Зарегистрироваться</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

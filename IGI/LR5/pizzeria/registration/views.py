@@ -1,27 +1,24 @@
+from datetime import datetime
+
+import pytz
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from django.shortcuts import redirect, render
+from django.shortcuts import render, redirect
+from pizza.models import Order
+from registration.models import Customer
 
-from .forms import UserCreationForm
+from .forms import CustomUserCreationForm
 
 
 # Create your views here.
 def create_account(request):
-    """
-    Allows a site user to create a new account using the UserCreationForm
-
-    :param request: Standard Django request object
-    :return if GET request: render 'accounts/create_account.html'
-    :return if successful POST:
-        Create User and return redirect 'accounts:create_account'
-    """
-    form = UserCreationForm
+    form = CustomUserCreationForm
 
     # If the HTTP method is POST we check the form for validity
     if request.method == 'POST':
-        form = UserCreationForm(data=request.POST)
+        form = CustomUserCreationForm(data=request.POST)
 
         # If the form is valid, save the form and preform a redirect
         if form.is_valid():
@@ -40,14 +37,6 @@ def create_account(request):
 
 
 def login_user(request):
-    """
-    Allows a user to login to the site with valid credentials
-
-    :param request: Standard Django request object
-    :return if GET request: render 'accounts:login'
-    :return if successful POST:
-        Login User and return redirect 'workshop:homepage'
-    """
     form = AuthenticationForm
 
     if request.method == 'POST':
@@ -64,13 +53,36 @@ def login_user(request):
 
 @login_required
 def logout_user(request):
-    """
-    Allows a logged in user to logout
-
-    :param request: Standard Django Request object
-    :return: Logout User and return render redirect 'workshop:homepage'
-    """
-    # Log the user out and redirect them to the homepage
     logout(request)
     messages.success(request, 'You have been logged out')
     return redirect('pizza:homepage')
+
+
+@login_required
+def user_profile(request):
+    user = request.user
+    try:
+        customer = Customer.objects.get(user=user)
+    except Customer.DoesNotExist:
+        return redirect('create_account')
+
+    orders = Order.objects.filter(client=user).order_by('-created_at')
+
+    # Get user's timezone from the request (default to UTC if not provided)
+    user_timezone_str = request.POST.get('timezone', 'UTC')
+    try:
+        user_timezone = pytz.timezone(user_timezone_str)
+    except pytz.UnknownTimeZoneError:
+        user_timezone = pytz.UTC
+
+    # Current date in user's timezone and UTC
+    current_date_user_tz = datetime.now(user_timezone)
+    current_date_utc = datetime.utcnow().replace(tzinfo=pytz.utc)
+
+    return render(request, 'user_profile.html', {
+        'customer': customer,
+        'orders': orders,
+        'user_timezone': user_timezone_str,
+        'current_date_user_tz': current_date_user_tz,
+        'current_date_utc': current_date_utc
+    })
