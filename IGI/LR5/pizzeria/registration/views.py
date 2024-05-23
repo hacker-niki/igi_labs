@@ -1,5 +1,5 @@
 from datetime import datetime
-
+import requests
 import pytz
 from django.contrib import messages
 from django.contrib.auth import login, logout
@@ -79,10 +79,33 @@ def user_profile(request):
     current_date_user_tz = datetime.now(user_timezone)
     current_date_utc = datetime.utcnow().replace(tzinfo=pytz.utc)
 
+    # Extract first name from the user's full name
+    first_name = user.first_name
+
+    # Initialize age and gender variables
+    predicted_age = None
+    predicted_gender = None
+
+    if first_name:
+        # Agify API request
+        agify_response = requests.get(f'https://api.agify.io', params={'name': first_name})
+        if agify_response.status_code == 200:
+            agify_data = agify_response.json()
+            predicted_age = agify_data.get('age')
+
+        # Genderize API request
+        genderize_response = requests.get(f'https://api.genderize.io', params={'name': first_name})
+        if genderize_response.status_code == 200:
+            genderize_data = genderize_response.json()
+            predicted_gender = genderize_data.get('gender')
+
     return render(request, 'user_profile.html', {
         'customer': customer,
         'orders': orders,
         'user_timezone': user_timezone_str,
         'current_date_user_tz': current_date_user_tz,
-        'current_date_utc': current_date_utc
+        'current_date_utc': current_date_utc,
+        'predicted_age': predicted_age,
+        'predicted_gender': predicted_gender,
+        'request': request
     })

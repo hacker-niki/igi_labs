@@ -17,7 +17,9 @@
                 <p><strong>Дата рождения:</strong> {{ customer.date_of_birth|date:"d/m/Y" }}</p>
                 <p><strong>Телефонный номер:</strong> {{ customer.telephone_number }}</p>
                 <p><strong>Текущая дата ({{ user_timezone }}):</strong> {{ current_date_user_tz|date:"d/m/Y H:i" }}</p>
-{#                <p><strong>Текущая дата (UTC):</strong> {{ current_date_utc|date:"d/m/Y H:i" }}</p>#}
+                <p><strong>predicted_age:</strong> {{ predicted_age }}</p>
+                <p><strong>predicted_gender:</strong> {{ predicted_gender }}</p>
+                {#                <p><strong>Текущая дата (UTC):</strong> {{ current_date_utc|date:"d/m/Y H:i" }}</p>#}
             </div>
             <div class="col-md-8">
                 <h2>Мои заказы</h2>
