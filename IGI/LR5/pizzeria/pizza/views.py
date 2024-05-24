@@ -9,6 +9,7 @@ from django.shortcuts import render
 
 from .forms import PizzaForm, OrderForm, PizzaFilterForm
 from .models import Pizza, Order, PromoCode
+from registration.models import Courier
 
 
 def index(request):
@@ -74,7 +75,25 @@ def order_pizza(request, pizza_id):
     total_price = quantity * pizza.price
     order = Order.objects.create(client=request.user, pizza=pizza, quantity=quantity, total_price=total_price)
     logger.info("Pizza ordered successfully")
-    return render(request, 'order_confirmation.html', {'order': order})
+    return render(request, 'order_confirmation.html', {'order': order, 'pizza': pizza})
+
+
+@login_required
+def confirm_order(request, order_id):
+    logger.debug("Confirming order")
+    # order_id = request.POST.get('order_id')
+    order = get_object_or_404(Order, id=order_id)
+    promo_code = request.POST.get('promo_code')
+
+    if promo_code:
+        try:
+            promo = PromoCode.objects.get(code=promo_code, is_active=True)
+            order.discount = promo.discount
+            order.save()
+        except PromoCode.DoesNotExist:
+            error_message = "Invalid or inactive promo code"
+            return render(request, 'order_confirmation.html', {'order': order, 'error_message': error_message})
+    return redirect(to='pizza:homepage')
 
 
 @login_required
@@ -135,5 +154,9 @@ def finish_order(request, order_id):
     order = get_object_or_404(Order, id=order_id)
     order.status = True
     order.updated_at = datetime.now()
+    order.courier = request.user
+    courier = get_object_or_404(Courier, user=order.courier)
+    courier.total_deliveries += 1
+    courier.save()
     order.save()
     return redirect('pizza:order_list')

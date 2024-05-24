@@ -18,16 +18,18 @@ class Order(models.Model):
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     total_price = models.DecimalField(max_digits=8, decimal_places=2)
-    courier = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='courier_orders', null=True, blank=True)
+    courier = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='courier_orders', null=True,
+                                blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=False, null=True, blank=True)
     status = models.BooleanField(default=False)
+    discount = models.DecimalField(max_digits=5, decimal_places=2, default=0)
 
     def __str__(self):
         return f"Order {self.id} by {self.client.username}"
 
     def save(self, *args, **kwargs):
-        self.total_price = self.quantity * self.pizza.price
+        self.total_price = float(self.quantity) * float(self.pizza.price) * (1 - float(self.discount))
         super().save(*args, **kwargs)
 
 
