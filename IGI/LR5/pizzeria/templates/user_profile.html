@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('user-timezone').value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            document.getElementById('timezone-form').submit();
+        });
+    </script>
+    <div class="container text-center">
+        <h1>Профиль пользователя</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Личные данные</h2>
+                <p><strong>Имя пользователя:</strong> {{ customer.user.username }}</p>
+                <p><strong>Электронная почта:</strong> {{ customer.user.email }}</p>
+                <p><strong>Дата рождения:</strong> {{ customer.date_of_birth|date:"d/m/Y" }}</p>
+                <p><strong>Телефонный номер:</strong> {{ customer.telephone_number }}</p>
+                <p><strong>Текущая дата ({{ user_timezone }}):</strong> {{ current_date_user_tz|date:"d/m/Y H:i" }}</p>
+                <p><strong>predicted_age:</strong> {{ predicted_age }}</p>
+                <p><strong>predicted_gender:</strong> {{ predicted_gender }}</p>
+                {#                <p><strong>Текущая дата (UTC):</strong> {{ current_date_utc|date:"d/m/Y H:i" }}</p>#}
+            </div>
+            <div class="col-md-8">
+                <h2>Мои заказы</h2>
+                {% if orders %}
+                    <table class="table table-striped text-center">
+                        <thead>
+                        <tr>
+                            <th>Пицца</th>
+                            <th>Количество</th>
+                            <th>Общая цена</th>
+                            <th>Дата заказа</th>
+                            <th>Статус</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for order in orders %}
+                            <tr>
+                                <td>{{ order.pizza.name }}</td>
+                                <td>{{ order.quantity }}</td>
+                                <td>${{ order.total_price }}</td>
+                                <td>{{ order.created_at|date:"d M Y H:i" }}</td>
+                                {% if order.status %}
+                                    <td>Выполнен</td>
+                                {% else %}
+                                    <td>Выполняется</td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>Вы еще не сделали ни одного заказа.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title" align="center">{{ pizza.name }}</h5>
+                        <p class="card-text"><strong>Цена:</strong> ${{ pizza.price }}</p>
+                        {% if pizza.sauce %}
+                            <p class="card-text"><strong>Соус:</strong> {{ pizza.sauce }}</p>
+                        {% endif %}
+                        {% if pizza.image %}
+                            <img class="card-img-top" src="{{ pizza.image.url }}" alt="{{ pizza.name }}">
+                        {% endif %}
+                        {% if request.user.is_staff %}
+                            <div class="text-center mt-3">
+                                <a href="{% url 'pizza:pizza_edit' pizza.id %}"
+                                   class="btn btn-primary">Редактировать</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
