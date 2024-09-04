@@ -1,0 +1,17 @@
+{% extends 'base_blog.html' %}
+
+{% block content %}
+    <div class="container text-center">
+        <h1>Промокоды</h1>
+        <ul>
+            {% for promo in promos %}
+                <li>
+                    <div {% if not promo.is_active %}class="text-info" {% endif %}>
+                        <h4>Код {{ promo.code }} - скидка {{ promo.discount }}%</h4>
+
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

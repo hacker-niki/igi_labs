@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Order Detail</h1>
+    <p>ID: {{ order.id }}</p>
+    <p>Client: {{ order.client.username }}</p>
+    <p>Pizza: {{ order.pizza.name }}</p>
+    <p>Quantity: {{ order.quantity }}</p>
+    <p>Total Price: {{ order.total_price }}</p>
+    <p>Created At: {{ order.created_at }}</p>
+    <p>Status: {{ order.status }}</p>
+    {% if not order.status %}
+        <a href="{% url 'pizza:finish_order' order.id %}">Finish Order</a>
+    {% endif %}
+    <a href="{% url 'pizza:order_list' %}">Back to Orders</a>
+{% endblock %}
