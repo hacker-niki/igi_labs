@@ -7,10 +7,10 @@
             document.getElementById('timezone-form').submit();
         });
     </script>
-    <div class="container text-center">
+    <div>
         <h1>Профиль пользователя</h1>
-        <div class="row">
-            <div class="col-md-4">
+        <div>
+            <div>
                 <h2>Личные данные</h2>
                 <p><strong>Имя пользователя:</strong> {{ customer.user.username }}</p>
                 <p><strong>Электронная почта:</strong> {{ customer.user.email }}</p>
@@ -19,12 +19,11 @@
                 <p><strong>Текущая дата ({{ user_timezone }}):</strong> {{ current_date_user_tz|date:"d/m/Y H:i" }}</p>
                 <p><strong>predicted_age:</strong> {{ predicted_age }}</p>
                 <p><strong>predicted_gender:</strong> {{ predicted_gender }}</p>
-                {#                <p><strong>Текущая дата (UTC):</strong> {{ current_date_utc|date:"d/m/Y H:i" }}</p>#}
             </div>
-            <div class="col-md-8">
+            <div>
                 <h2>Мои заказы</h2>
                 {% if orders %}
-                    <table class="table table-striped text-center">
+                    <table>
                         <thead>
                         <tr>
                             <th>Пицца</th>

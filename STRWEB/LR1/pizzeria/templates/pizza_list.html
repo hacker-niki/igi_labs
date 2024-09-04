@@ -2,54 +2,48 @@
 
 {% block content %}
 
-
-    <div class="container text-center">
+    <div>
         <h1>Наши Пиццы</h1>
-        <form method="get" class="mb-4">
-            <div class="form-row">
-                <div class="col">
-                    <select name="sort_by" class="form-control">
+        <form method="get">
+            <div>
+                <div>
+                    <select name="sort_by">
                         {% for value, label in form.fields.sort_by.choices %}
                             <option value="{{ value }}"
                                     {% if value == form.sort_by.value %}selected{% endif %}>{{ label }}</option>
                         {% endfor %}
                     </select>
                 </div>
-                <div class="col">
+                <div>
                     {% if form.sauce_search.value %}
-                        <input type="text" name="sauce_search" class="form-control" placeholder="Поиск по соусу"
+                        <input type="text" name="sauce_search" placeholder="Поиск по соусу"
                                value="{{ form.sauce_search.value }}">
                     {% else %}
-                        <input type="text" name="sauce_search" class="form-control" placeholder="Поиск по соусу">
-
+                        <input type="text" name="sauce_search" placeholder="Поиск по соусу">
                     {% endif %}
                 </div>
-                <div class="col">
-                    <button type="submit" class="btn btn-primary">Фильтр</button>
+                <div>
+                    <button type="submit">Фильтр</button>
                 </div>
             </div>
         </form>
 
-
-        <div class="row">
+        <div>
             {% for pizza in pizzas %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title" align="center">{{ pizza.name }}</h5>
-                            <p class="card-text"><strong>Цена:</strong> ${{ pizza.price }}</p>
+                <div>
+                    <div>
+                        <div>
+                            <h5 align="center">{{ pizza.name }}</h5>
+                            <p><strong>Цена:</strong> ${{ pizza.price }}</p>
                             {% if pizza.sauce %}
-                                <p class="card-text"><strong>Соус:</strong> {{ pizza.sauce }}</p>
+                                <p><strong>Соус:</strong> {{ pizza.sauce }}</p>
                             {% endif %}
                             {% if pizza.image %}
-                                <img class="card-img-top" src="{{ pizza.image.url }}" alt="{{ pizza.name }}">
+                                <img src="{{ pizza.image.url }}" alt="{{ pizza.name }}">
                             {% endif %}
                             {% if request.user.is_authenticated %}
-
-                                <a href="{% url 'pizza:pizza_detail' pizza.id %}"
-                                   class="mt-3 btn btn-primary">Подробнее</a>
-                                <a href="{% url 'pizza:order_pizza' pizza.id %}"
-                                   class="mt-3 btn btn-success">Заказать</a>
+                                <a href="{% url 'pizza:pizza_detail' pizza.id %}">Подробнее</a>
+                                <a href="{% url 'pizza:order_pizza' pizza.id %}">Заказать</a>
                             {% endif %}
                         </div>
                     </div>

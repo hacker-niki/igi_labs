@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
 
 {% block navbar %}
-    <li class="nav-item active">
-        <a class="nav-link" href="{% url 'blog:about_company' %}">О компании</a>
+    <li>
+        <a href="{% url 'blog:about_company' %}">О компании</a>
     </li>
-    <li class="nav-item active">
+    <li>
         <a class="nav-link" href="{% url 'blog:news_list' %}">Новости</a>
     </li>
-    <li class="nav-item active">
+    <li>
         <a class="nav-link" href="{% url 'blog:faq_list' %}">ЧАВО</a>
     </li>
-    <li class="nav-item active">
+    <li>
         <a class="nav-link" href="{% url 'blog:promo_list' %}">Промокоды</a>
+    </li>
+    <li>
+        <a class="nav-link" href="{% url 'blog:reviews' %}">Отзывы</a>
     </li>
 {% endblock navbar %}
 

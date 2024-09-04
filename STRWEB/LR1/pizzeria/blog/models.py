@@ -25,3 +25,11 @@ class FAQ(models.Model):
 
     def __str__(self):
         return self.question
+
+
+class Review(models.Model):
+    review = models.TextField()
+    added_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.review

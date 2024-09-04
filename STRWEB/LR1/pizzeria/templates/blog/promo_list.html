@@ -1,16 +1,32 @@
 {% extends 'base_blog.html' %}
 
 {% block content %}
-    <div class="container text-center">
+    <div>
         <h1>Промокоды</h1>
         <ul>
             {% for promo in promos %}
-                <li>
-                    <div {% if not promo.is_active %}class="text-info" {% endif %}>
-                        <h4>Код {{ promo.code }} - скидка {{ promo.discount }}%</h4>
+                {% if promo.is_active %}
+                    <li>
+                        <div>
+                            <h4>Код {{ promo.code }} - скидка {{ promo.discount }}%</h4>
+                        </div>
+                    </li>
 
-                    </div>
-                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <h4>Неактивные промокоды:</h4>
+        <ul>
+            {% for promo in promos %}
+
+                {% if not promo.is_active %}
+                    <li>
+                        <div>
+                            <h4>Код {{ promo.code }} - скидка {{ promo.discount }}%</h4>
+                        </div>
+                    </li>
+
+                {% endif %}
             {% endfor %}
         </ul>
     </div>

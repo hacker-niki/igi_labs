@@ -1,13 +1,19 @@
 # Create your views here.
+import random
+
 from django.shortcuts import render
 from pizza.models import PromoCode
 
-from .models import Post, CompanyInfo, FAQ
+from .models import Post, CompanyInfo, FAQ, Review
 
 
 def home(request):
     latest_post = Post.objects.order_by('-published_date').first()
-    return render(request, 'blog/home.html', {'latest_post': latest_post})
+    images = ['pizzeria_promo_1.png', 'pizzeria_promo_2.png', 'pizzeria_promo_3.png']  # List of image paths
+    random_image = random.choice(images)  # Select a random image from the list
+
+    return render(request, 'blog/home.html', {'latest_post': latest_post,
+                                              'random_image': random_image})
 
 
 def about_company(request):
@@ -30,3 +36,8 @@ def promo_list(request):
     for promo in promos:
         promo.discount *= 100
     return render(request, 'blog/promo_list.html', {'promos': promos})
+
+
+def review_list(request):
+    reviews = Review.objects.all().order_by('added_date')
+    return render(request, 'blog/reviews.html', {'reviews': reviews})

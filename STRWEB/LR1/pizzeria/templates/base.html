@@ -4,58 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizza Shop</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>PizzeriaNapoli</title>
+    <link rel="icon" href="{% static 'logo.ico' %}" type="image/x-icon">
+    {% include 'meta.html' %}
 </head>
 <body>
 
 {% block top_navbar %}
 
-    <nav class="navbar navbar-expand-md sticky-top">
-        <div class="container">
+    <nav>
+        <div>
 
+            <a href="{% url 'pizza:pizza_list' %}">PizzeriaNapoli</a>
 
-            <a class="navbar-brand" href="{% url 'pizza:pizza_list' %}">Пиццерия</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div id="navbarSupportedContent">
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-
-                {# right_side_nav_links #}
-                <ul class="navbar-nav ml-auto">  <!-- Added ml-auto for right alignment -->
+                <ul>
                     {% if request.user.is_staff %}
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'pizza:order_list' %}">Заказы</a>
+                        <li>
+                            <a href="{% url 'pizza:order_list' %}">Заказы</a>
                         </li>
                     {% endif %}
                     {% if request.user.is_authenticated %}
-                        <li class="nav-item active">
-                            <a class="nav-link"
-                               href="{% url 'registration:user_profile' %}">Welcome {{ request.user }}</a>
+                        <li>
+                            <a href="{% url 'registration:user_profile' %}">Welcome {{ request.user }}</a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'registration:logout' %}">Logout</a>
+                        <li>
+                            <a href="{% url 'registration:logout' %}">Logout</a>
                         </li>
                     {% else %}
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'registration:login' %}">Login/register</a>
+                        <li>
+                            <a href="{% url 'registration:login' %}">Login/register</a>
                         </li>
                     {% endif %}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'blog:home' %}">Домашняя</a>
+                    <li>
+                        <a href="{% url 'blog:home' %}">Домашняя</a>
                     </li>
                     {% block navbar %}
-
                     {% endblock navbar %}
                 </ul>
-                {# /right_side_nav_links #}
 
             </div>
         </div>
@@ -65,7 +52,6 @@
 
 {% block content %}{% endblock %}
 
-<!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
