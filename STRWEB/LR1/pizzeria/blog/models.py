@@ -28,8 +28,18 @@ class FAQ(models.Model):
 
 
 class Review(models.Model):
-    review = models.TextField()
+    user_name = models.CharField(max_length=200)
+    title = models.TextField()
+    content = models.TextField()
     added_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.review
+
+
+class LogoCompanies(models.Model):
+    company_name = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='news_images/', blank=True, null=True)
+
+    def __str__(self):
+        return self.company_name

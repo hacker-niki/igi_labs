@@ -10,8 +10,8 @@
                     {% if post.image %}
                         <img src="{{ post.image.url }}" alt="{{ post.title }}">
                     {% endif %}
-                    <p>{{ post.content|truncatewords:20 }}</p>
-                    {#        <a href="{% url 'blog:post_detail' post.pk %}">Читать далее</a>#}
+                    <p>{{ post.content|truncatewords:15  }}</p>
+                            <a href="{% url 'blog:news_post' post.id %}">Читать далее</a>
                 </li>
             {% endfor %}
         </ul>

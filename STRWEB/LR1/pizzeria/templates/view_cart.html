@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load filters %}
+{% block content %}
+    <h1>Shopping Cart</h1>
+
+    <ul>
+        {% for pizza in pizzas_in_cart %}
+            <li>
+                {{ pizza.name }} - Quantity: {{ cart|get_item:pizza.id }} - Price: ${{ pizza.price }}
+                <form action="{% url 'pizza:order_pizza' pizza.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Добавить в корзину</button>
+                </form>
+                <form action="{% url 'pizza:remove_from_cart' pizza.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Удалить из корзины</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+    <a href="{% url 'pizza:pizza_list' %}">Back to Pizza List</a>
+
+    {% if pizzas_in_cart|length > 0 %}
+        <p>Total Price: ${{ total_price }}</p>
+
+        <form method="post" action="{% url 'pizza:confirm_order' %}">
+            {% csrf_token %}
+            <div>
+                <label for="promo_code">Промокод:</label>
+                <input type="text" id="promo_code" name="promo_code">
+            </div>
+            {% if error_message %}
+                <div role="alert">
+                    {{ error_message }}
+                </div>
+            {% endif %}
+            <button type="submit">Подтвердить</button>
+        </form>
+        <form action="{% url 'pizza:confirm_order' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Очистить корзину</button>
+        </form>
+    {% else %}
+        <p>Корзина пуста</p>
+    {% endif %}
+{% endblock %}

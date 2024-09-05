@@ -30,11 +30,14 @@
                             <a href="{% url 'registration:user_profile' %}">Welcome {{ request.user }}</a>
                         </li>
                         <li>
-                            <a href="{% url 'registration:logout' %}">Logout</a>
+                            <a href="{% url 'pizza:view_cart' %}">Корзина</a>
                         </li>
                     {% else %}
                         <li>
                             <a href="{% url 'registration:login' %}">Login/register</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'registration:login' %}">Корзина</a>
                         </li>
                     {% endif %}
                     <li>
@@ -49,8 +52,15 @@
     </nav>
 
 {% endblock top_navbar %}
+<main>
+    {% block content %}{% endblock %}
+</main>
 
-{% block content %}{% endblock %}
+<footer>
+    <div>
+        <p><b>&copy; 2024 PizzeriaNapoli</b></p>
+    </div>
+</footer>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

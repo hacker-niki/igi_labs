@@ -65,7 +65,7 @@ def user_profile(request):
     try:
         customer = Customer.objects.get(user=user)
     except Customer.DoesNotExist:
-        return redirect('create_account')
+        return redirect('registration:create_account')
 
     orders = Order.objects.filter(client=user).order_by('-created_at')
 

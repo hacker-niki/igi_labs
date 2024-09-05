@@ -67,6 +67,78 @@ def pizza_create(request):
     return render(request, 'pizza_form.html', {'form': form})
 
 
+def add_to_cart(request, pizza_id):
+    logger.debug(f"Adding pizza with id {pizza_id} to the cart")
+    pizza = get_object_or_404(Pizza, id=pizza_id)
+
+    if 'cart' not in request.session:
+        request.session['cart'] = {}
+
+    cart = request.session['cart']
+
+    if str(pizza_id) in cart:
+        cart[str(pizza_id)] += 1
+    else:
+        cart[str(pizza_id)] = 1
+
+    request.session['cart'] = cart
+    logger.info("Pizza added to the cart successfully")
+
+    return redirect('pizza:view_cart')
+
+
+@login_required
+def view_cart(request):
+    if 'cart' not in request.session:
+        request.session['cart'] = {}
+
+    logger.debug("Viewing shopping cart")
+    cart = request.session.get('cart', {})
+    pizzas_in_cart = Pizza.objects.filter(id__in=cart.keys())
+
+    total_price = sum(cart[str(pizza.id)] * pizza.price for pizza in pizzas_in_cart)
+
+    return render(request, 'view_cart.html',
+                  {'cart': cart, 'pizzas_in_cart': pizzas_in_cart, 'total_price': total_price})
+
+
+@login_required
+def remove_from_cart(request, pizza_id):
+    if 'cart' not in request.session:
+        request.session['cart'] = {}
+
+    logger.debug(f"Removing pizza with id {pizza_id} from the cart")
+
+    if 'cart' in request.session:
+        cart = request.session['cart']
+
+        if str(pizza_id) in cart:
+            if cart[str(pizza_id)] > 1:
+                cart[str(pizza_id)] -= 1
+            else:
+                del cart[str(pizza_id)]
+
+        request.session['cart'] = cart
+        logger.info("Pizza removed from the cart successfully")
+
+    return redirect('pizza:view_cart')
+
+
+@login_required
+def clear_cart(request):
+    if 'cart' not in request.session:
+        request.session['cart'] = {}
+
+    logger.debug("Clearing the shopping cart")
+
+    if 'cart' in request.session:
+        del request.session['cart']
+
+    logger.info("Cart cleared successfully")
+
+    return redirect('pizza:view_cart')
+
+
 @login_required
 def order_pizza(request, pizza_id):
     logger.debug(f"Ordering pizza with id: {pizza_id}")
@@ -79,22 +151,38 @@ def order_pizza(request, pizza_id):
 
 
 @login_required
-def confirm_order(request, order_id):
+def confirm_order(request):
     logger.debug("Confirming order")
-    # order_id = request.POST.get('order_id')
-    order = get_object_or_404(Order, id=order_id)
-    promo_code = request.POST.get('promo_code')
 
+    if 'cart' not in request.session:
+        request.session['cart'] = {}
+
+    cart = request.session['cart']
+
+    promo_code = request.POST.get('promo_code')
+    orders = []
+    for pizza_id in cart.keys():
+        pizza = get_object_or_404(Pizza, id=pizza_id)
+        order = Order.objects.create(client=request.user, pizza=pizza, quantity=cart[str(pizza_id)],
+                                     total_price=pizza.price * cart[str(pizza_id)])
+        order.save()
+        orders.append(order)
+    cart = {}
+    request.session['cart'] = cart
     if promo_code:
         try:
-            promo = PromoCode.objects.get(code=promo_code, is_active=True)
-            order.discount = promo.discount
-            order.save()
+            promo = get_object_or_404(PromoCode, code=promo_code, is_active=True)
+            for order in orders:
+                order.discount = promo.discount
+                order.save()
         except PromoCode.DoesNotExist:
             error_message = "Invalid or inactive promo code"
             return render(request, 'order_confirmation.html', {'order': order, 'error_message': error_message})
-    return redirect(to='pizza:homepage')
+    return redirect(to='pizza:payment')
 
+@login_required
+def payment_view(request):
+    return render(request, 'payment.html')
 
 @login_required
 def pizza_edit(request, pizza_id):

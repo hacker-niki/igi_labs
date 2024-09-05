@@ -17,4 +17,11 @@
         <h3>ПРОМО:</h3>
         <img src="{% static random_image %}" alt="Random Image">
     </div>
+    <div>
+        <h4>Мы сотрудничаем:</h4>
+        {% for logo in logo_companies %}
+            <img src="{{ logo.image.url }}" alt="Company Logo">
+        {% endfor %}
+
+    </div>
 {% endblock %}

@@ -19,6 +19,8 @@
                 <p><strong>Текущая дата ({{ user_timezone }}):</strong> {{ current_date_user_tz|date:"d/m/Y H:i" }}</p>
                 <p><strong>predicted_age:</strong> {{ predicted_age }}</p>
                 <p><strong>predicted_gender:</strong> {{ predicted_gender }}</p>
+                <a href="{% url 'registration:logout' %}">Logout</a>
+
             </div>
             <div>
                 <h2>Мои заказы</h2>

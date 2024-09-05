@@ -18,6 +18,7 @@
                             <a href="{% url 'pizza:pizza_edit' pizza.id %}">Редактировать</a>
                         </div>
                     {% endif %}
+                    <a href="{% url 'pizza:order_pizza' pizza.id %}">Заказать</a>
                 </div>
             </div>
         </div>

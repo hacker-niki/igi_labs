@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import CompanyInfo, Post, FAQ
+from .models import CompanyInfo, Post, FAQ, LogoCompanies
+
 
 
 @admin.register(CompanyInfo)
@@ -23,3 +24,8 @@ class FAQAdmin(admin.ModelAdmin):
     search_fields = ('question',)
     list_filter = ('added_date',)
     date_hierarchy = 'added_date'
+
+
+@admin.register(LogoCompanies)
+class LogoCompaniesAdmin(admin.ModelAdmin):
+    list_display = ('company_name', 'image')
