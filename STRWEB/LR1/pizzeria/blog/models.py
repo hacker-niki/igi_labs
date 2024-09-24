@@ -34,7 +34,7 @@ class Review(models.Model):
     added_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.review
+        return self.user_name
 
 
 class LogoCompanies(models.Model):
@@ -43,3 +43,19 @@ class LogoCompanies(models.Model):
 
     def __str__(self):
         return self.company_name
+
+
+class Employee(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField(max_length=1000)
+    image = models.ImageField(upload_to='employee_images/', blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Vacancy(models.Model):
+    description = models.TextField(null=False, max_length=1000)
+
+    def __str__(self):
+        return self.description.split(' ')[0]

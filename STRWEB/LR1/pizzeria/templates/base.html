@@ -9,49 +9,51 @@
     {% include 'meta.html' %}
 </head>
 <body>
+<header>
+    {% block top_navbar %}
 
-{% block top_navbar %}
+        <nav>
+            <div>
 
-    <nav>
-        <div>
+                <a href="{% url 'pizza:pizza_list' %}">PizzeriaNapoli</a>
 
-            <a href="{% url 'pizza:pizza_list' %}">PizzeriaNapoli</a>
+                <div id="navbarSupportedContent">
 
-            <div id="navbarSupportedContent">
-
-                <ul>
-                    {% if request.user.is_staff %}
+                    <ul>
+                        {% if request.user.is_staff %}
+                            <li>
+                                <a href="{% url 'pizza:order_list' %}">Заказы</a>
+                            </li>
+                        {% endif %}
+                        {% if request.user.is_authenticated %}
+                            <li>
+                                <a href="{% url 'registration:user_profile' %}">Welcome {{ request.user }}</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'pizza:view_cart' %}">Корзина</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{% url 'registration:login' %}">Login/register</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'registration:login' %}">Корзина</a>
+                            </li>
+                        {% endif %}
                         <li>
-                            <a href="{% url 'pizza:order_list' %}">Заказы</a>
+                            <a href="{% url 'blog:home' %}">Домашняя</a>
                         </li>
-                    {% endif %}
-                    {% if request.user.is_authenticated %}
-                        <li>
-                            <a href="{% url 'registration:user_profile' %}">Welcome {{ request.user }}</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'pizza:view_cart' %}">Корзина</a>
-                        </li>
-                    {% else %}
-                        <li>
-                            <a href="{% url 'registration:login' %}">Login/register</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'registration:login' %}">Корзина</a>
-                        </li>
-                    {% endif %}
-                    <li>
-                        <a href="{% url 'blog:home' %}">Домашняя</a>
-                    </li>
-                    {% block navbar %}
-                    {% endblock navbar %}
-                </ul>
+                        {% block navbar %}
+                        {% endblock navbar %}
+                    </ul>
 
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-{% endblock top_navbar %}
+    {% endblock top_navbar %}
+</header>
+
 <main>
     {% block content %}{% endblock %}
 </main>

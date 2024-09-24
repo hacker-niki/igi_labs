@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from pizza.models import PromoCode
 
 from .forms import ReviewForm
-from .models import Post, CompanyInfo, FAQ, Review, LogoCompanies
+from .models import Post, CompanyInfo, FAQ, Review, LogoCompanies, Vacancy, Employee
 
 
 def home(request):
@@ -50,6 +50,16 @@ def review_list(request):
     return render(request, 'blog/reviews.html', {'reviews': reviews})
 
 
+def vacancy_view(request):
+    vacancies = Vacancy.objects.all()
+    return render(request, 'blog/vacancy.html', {'vacancies': vacancies})
+
+
+def employee_view(request):
+    workers = Employee.objects.all()
+    return render(request, 'blog/employee.html', {'workers': workers})
+
+
 @login_required
 def submit_review(request):
     if request.method == 'POST':
@@ -58,7 +68,7 @@ def submit_review(request):
             # Process the form data
             # Assuming you have a Review model to save the review data
             review = form.save(commit=False)
-            review.user = request.user  # Assuming you have a user field in your Review model
+            review.user_name = request.user.first_name  # Assuming you have a user field in your Review model
             review.added_date = datetime.now()
             review.save()
             return redirect('blog:reviews')  # Redirect to a success page after submitting the review

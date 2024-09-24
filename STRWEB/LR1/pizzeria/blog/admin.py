@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-from .models import CompanyInfo, Post, FAQ, LogoCompanies
-
+from .models import CompanyInfo, Post, FAQ, LogoCompanies, Employee, Vacancy, Review
 
 
 @admin.register(CompanyInfo)
@@ -29,3 +28,20 @@ class FAQAdmin(admin.ModelAdmin):
 @admin.register(LogoCompanies)
 class LogoCompaniesAdmin(admin.ModelAdmin):
     list_display = ('company_name', 'image')
+
+
+@admin.register(Vacancy)
+class VacancyAdmin(admin.ModelAdmin):
+    list_display = ('description',)
+
+
+@admin.register(Employee)
+class EmployeeAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('user_name',)
+
+
