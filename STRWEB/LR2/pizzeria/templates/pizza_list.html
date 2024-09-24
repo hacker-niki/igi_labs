@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div itemscope itemtype="https://schema.org/ItemList">
+        <h1>Наши Пиццы</h1>
+        <form method="get">
+            <div>
+                <div>
+                    <select name="sort_by">
+                        {% for value, label in form.fields.sort_by.choices %}
+                            <option value="{{ value }}"
+                                    {% if value == form.sort_by.value %}selected{% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    {% if form.sauce_search.value %}
+                        <input type="text" name="sauce_search" placeholder="Поиск по соусу"
+                               value="{{ form.sauce_search.value }}">
+                    {% else %}
+                        <input type="text" name="sauce_search" placeholder="Поиск по соусу">
+                    {% endif %}
+                </div>
+                <div>
+                    <button type="submit">Фильтр</button>
+                </div>
+            </div>
+        </form>
+
+        <div>
+            {% for pizza in pizzas %}
+                <div itemscope itemtype="https://schema.org/MenuItem">
+                    <div>
+                        <div>
+                            <h5 itemprop="name" align="center">{{ pizza.name }}</h5>
+                            <p><strong>Цена:</strong> $
+                            <div itemprop="price">{{ pizza.price }}</div>
+                            </p>
+                            {% if pizza.sauce %}
+                                <p><strong>Соус:</strong> {{ pizza.sauce }}</p>
+                            {% endif %}
+                            {% if pizza.image %}
+                                <img itemprop="image" src="{{ pizza.image.url }}" alt="{{ pizza.name }}">
+                            {% endif %}
+
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'pizza:pizza_detail' pizza.id %}">Подробнее</a>
+                                <a href="{% url 'pizza:order_pizza' pizza.id %}">Заказать</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

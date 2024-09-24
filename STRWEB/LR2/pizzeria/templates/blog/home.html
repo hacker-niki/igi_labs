@@ -1,0 +1,27 @@
+{% extends 'base_blog.html' %}
+{% load static %}
+
+{% block content %}
+    <div>
+        <img src="{% static 'logo.png' %}">
+    </div>
+    <div>
+        <h3> Последние новости:</h3>
+        {% if latest_post %}
+            <h1>{{ latest_post.title }}</h1>
+            <p>{{ latest_post.content|truncatewords:50 }}</p>
+            {#        <a href="{% url 'blog:post_detail' latest_post.pk %}">Читать далее</a>#}
+        {% else %}
+            <h3>Новостей нет.</h3>
+        {% endif %}
+        <h3>ПРОМО:</h3>
+        <img src="{% static random_image %}" alt="Random Image">
+    </div>
+    <div>
+        <h4>Мы сотрудничаем:</h4>
+        {% for logo in logo_companies %}
+            <img src="{{ logo.image.url }}" alt="Company Logo">
+        {% endfor %}
+
+    </div>
+{% endblock %}

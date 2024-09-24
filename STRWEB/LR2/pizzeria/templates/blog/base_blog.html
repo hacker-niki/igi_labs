@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    <a href="{% url 'blog:about_company' %}">О компании</a>
+
+    <a class="nav-link" href="{% url 'blog:news_list' %}">Новости</a>
+
+    <a class="nav-link" href="{% url 'blog:faq_list' %}">ЧАВО</a>
+
+    <a class="nav-link" href="{% url 'blog:promo_list' %}">Промокоды</a>
+
+    <a class="nav-link" href="{% url 'blog:reviews' %}">Отзывы</a>
+
+    <a class="nav-link" href="{% url 'blog:vacancy' %}">Вакансии</a>
+
+    <a class="nav-link" href="{% url 'blog:employee' %}">Сотрудники</a>
+
+{% endblock navbar %}
+
+
+{% block content %}{% endblock content %}

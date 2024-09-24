@@ -1,0 +1,32 @@
+{% extends 'base_blog.html' %}
+
+{% block content %}
+    <div>
+        <h1>Отзывы</h1>
+        {% if user.is_authenticated %}
+            <h2>Оставить отзыв</h2>
+            <form method="post" action="{% url 'blog:submit_review' %}">
+                {% csrf_token %}
+                <label for="title">Заголовок:</label><br>
+                <input type="text" id="title" name="title" required><br>
+                <label for="content">Содержание:</label><br>
+                <textarea id="content" name="content" required></textarea><br>
+                <button type="submit">Отправить</button>
+            </form>
+        {% else %}
+            <p>Пожалуйста <a href="{% url 'registration:login' %}">залогиньтесь</a> чтобы оставить отзыв.</p>
+        {% endif %}
+
+        <ol>
+            {% for review in reviews %}
+                <li>
+                    <h4>{{ review.title }} от {{ review.user_name }}</h4>
+                    <p>{{ review.content|truncatewords:20 }}</p>
+                    <time datetime="{{ review.added_date }}">{{ review.added_date }}</time>
+                    {#        <a href="{% url 'blog:post_detail' post.pk %}">Читать далее</a>#}
+                </li>
+                <hr>
+            {% endfor %}
+        </ol>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+        <div>
+            <div>
+                <div>
+                    <h5 align="center">{{ pizza.name }}</h5>
+                    <p><strong>Цена:</strong> ${{ pizza.price }}</p>
+                    {% if pizza.sauce %}
+                        <p><strong>Соус:</strong> {{ pizza.sauce }}</p>
+                    {% endif %}
+                    {% if pizza.image %}
+                        <img src="{{ pizza.image.url }}" alt="{{ pizza.name }}">
+                    {% endif %}
+                    {% if request.user.is_staff %}
+                        <div align="center">
+                            <a href="{% url 'pizza:pizza_edit' pizza.id %}">Редактировать</a>
+                        </div>
+                    {% endif %}
+                    <a href="{% url 'pizza:order_pizza' pizza.id %}">Заказать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

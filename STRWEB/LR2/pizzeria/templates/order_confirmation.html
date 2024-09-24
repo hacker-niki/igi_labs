@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+        <h1>Заказ подтвержден</h1>
+
+        <p>Вы успешно заказали пиццу: {{ order.pizza.name }}.</p>
+        <p>Количество: {{ order.quantity }}</p>
+        <p>Общая цена: ${{ order.total_price }}</p>
+        <form method="post" action="{% url 'pizza:confirm_order' order_id=order.id %}">
+            {% csrf_token %}
+            <div >
+                <label for="promo_code">Промокод:</label>
+                <input type="text"  id="promo_code" name="promo_code">
+            </div>
+            {% if error_message %}
+            <div  role="alert">
+                {{ error_message }}
+            </div>
+            {% endif %}
+            <button type="submit">Подтвердить</button>
+        </form>
+        <a href="{% url 'pizza:pizza_list' %}" >Вернуться к списку пицц</a>
+    </div>
+{% endblock %}

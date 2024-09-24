@@ -1,0 +1,12 @@
+{% extends 'base_blog.html' %}
+
+{% block content %}
+    <div>
+        <h1>{{ post.title }}</h1>
+
+        {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        {% endif %}
+        {{ post.content|safe  }}
+    </div>
+{% endblock %}

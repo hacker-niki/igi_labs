@@ -1,0 +1,21 @@
+{% extends 'base_blog.html' %}
+
+{% block content %}
+    <div>
+        <h1>Словарь терминов и понятий</h1>
+
+            {% for faq in faqs %}
+                <section>
+{#                    <h2>{{ faq.question }}</h2>#}
+                    <details>
+                        <summary>{{ faq.question }}</summary>
+
+                        <p>{{ faq.answer }}
+                            <em>Добавлено: {{ faq.added_date }}</em>
+                        </p>
+                    </details>
+                </section>
+            {% endfor %}
+
+    </div>
+{% endblock %}

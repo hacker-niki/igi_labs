@@ -1,0 +1,18 @@
+{% extends 'base_blog.html' %}
+
+{% block content %}
+    <div>
+        <h1>Сотрудники</h1>
+        <article>
+            {% for employee in workers %}
+                <section>
+                    <h2>{{ employee.name }}</h2>
+                    {% if employee.image %}
+                        <img src="{{ employee.image.url }}" alt="{{ employee.name }}">
+                    {% endif %}
+                    <p>{{ employee.description }}</p>
+                </section>
+            {% endfor %}
+        </article>
+    </div>
+{% endblock %}
