@@ -1,8 +1,8 @@
 {% extends 'base_blog.html' %}
-
+{% load static %}
 {% block content %}
     <div>
-        <h1>Новости</h1>
+        <h1>Новости <img src="{% static 'pizza-svgrepo-com.svg' %}"></h1>
         <ul>
             {% for post in posts %}
                 <li>

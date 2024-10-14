@@ -1,0 +1,53 @@
+form {
+    margin-top: 20px; /* Space above the form */
+}
+
+label {
+    display: block; /* Block display for labels */
+    margin-bottom: 5px; /* Space below the label */
+    font-weight: bold; /* Bold labels */
+}
+
+input[type="text"],
+textarea {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding inside inputs */
+    margin-bottom: 15px; /* Space below inputs */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+button {
+    background-color: #5cb85c; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding inside button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1rem; /* Font size */
+}
+
+button:hover {
+    background-color: #4cae4c; /* Darker green on hover */
+}
+
+h4 {
+    margin: 0; /* Remove default margin */
+    font-size: 1.5rem; /* Font size for review title */
+}
+
+time {
+    font-size: 0.9rem; /* Smaller font for date */
+    color: #777; /* Gray color for date */
+}
+
+/* Link Styles */
+a {
+    color: #007bff; /* Blue color for links */
+    text-decoration: none; /* No underline */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}

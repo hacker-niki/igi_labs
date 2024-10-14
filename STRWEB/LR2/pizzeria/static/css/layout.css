@@ -1,0 +1,110 @@
+* {
+    align-content: center;
+}
+
+html, body {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+
+.header {
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color);
+    padding: 10px 0;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: var(--primary-bg-color);
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.push {
+    margin-left: auto;
+}
+
+.navbar a {
+    color: var(--primary-text-color);
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.navbar a:hover {
+    background-color: var(--hover-bg-color);
+    border-radius: var(--border-radius);
+}
+
+/* Expandable section styles */
+.toggle {
+    display: none; /* Hide the checkbox */
+}
+
+.expand-btn {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    text-align: left;
+    width: 100%; /* Make button full width */
+    margin-bottom: 5px; /* Space below button */
+}
+
+.expandable-content {
+    display: none; /* Hide expandable content by default */
+    margin-left: 20px; /* Indent content */
+}
+
+.toggle:checked + .expand-btn + .expandable-content {
+    display: block; /* Show content when checkbox is checked */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column; /* Stack for small screens */
+    }
+}
+
+.container {
+    width: 60%;
+
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.wrapper {
+    box-sizing: border-box;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+header, footer {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+main {
+    flex-grow: 1;
+}

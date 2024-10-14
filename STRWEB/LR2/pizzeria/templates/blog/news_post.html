@@ -1,8 +1,9 @@
 {% extends 'base_blog.html' %}
+{% load static %}
 
 {% block content %}
     <div>
-        <h1>{{ post.title }}</h1>
+        <h1>{{ post.title }}<img src="{% static 'pizza-svgrepo-com.svg' %}"></h1>
 
         {% if post.image %}
             <img src="{{ post.image.url }}" alt="{{ post.title }}">

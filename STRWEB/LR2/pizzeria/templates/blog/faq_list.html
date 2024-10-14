@@ -1,8 +1,9 @@
 {% extends 'base_blog.html' %}
+{% load static %}
 
 {% block content %}
     <div>
-        <h1>Словарь терминов и понятий</h1>
+        <h1>Словарь терминов и понятий <img src="{% static 'pizza-svgrepo-com.svg' %}"></h1>
 
             {% for faq in faqs %}
                 <section>

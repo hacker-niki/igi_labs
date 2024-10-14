@@ -1,0 +1,14 @@
+:root {
+    --primary-bg-color: #333;
+    --primary-text-color: #fff;
+    --card-bg-color: #fff;
+    --card-border-color: #ccc;
+    --hover-bg-color: #555;
+    --hover-card-bg-color: #f0f0f0;
+    --gap: 20px;
+    --border-radius: 5px;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --big-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.1);
+    --font-family: Roboto;
+    --animation-duration: 1s ;
+}

@@ -1,8 +1,9 @@
 {% extends 'base_blog.html' %}
+{% load static %}
 
 {% block content %}
     <div>
-        <h1>Промокоды</h1>
+        <h1>Промокоды <img src="{% static 'pizza-svgrepo-com.svg' %}"></h1>
         <ul>
             {% for promo in promos %}
                 {% if promo.is_active %}

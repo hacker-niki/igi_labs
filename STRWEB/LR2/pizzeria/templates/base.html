@@ -7,65 +7,57 @@
     <title>PizzeriaNapoli</title>
     <link rel="icon" href="{% static 'logo.ico' %}" type="image/x-icon">
     {% include 'meta.html' %}
+    {% block head %}{% endblock %}
 </head>
 <body>
-<header>
-    {% block top_navbar %}
-
-        <nav>
-            <div>
-
-                <a href="{% url 'pizza:pizza_list' %}">PizzeriaNapoli</a>
-
-                <div id="navbarSupportedContent">
-
-                    <ul>
-                        {% if request.user.is_staff %}
-                            <li>
-                                <a href="{% url 'pizza:order_list' %}">Заказы</a>
-                            </li>
-                        {% endif %}
-                        {% if request.user.is_authenticated %}
-                            <li>
-                                <a href="{% url 'registration:user_profile' %}">Welcome {{ request.user }}</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'pizza:view_cart' %}">Корзина</a>
-                            </li>
-                        {% else %}
-                            <li>
-                                <a href="{% url 'registration:login' %}">Login/register</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'registration:login' %}">Корзина</a>
-                            </li>
-                        {% endif %}
-                        <li>
-                            <a href="{% url 'blog:home' %}">Домашняя</a>
-                        </li>
-                        {% block navbar %}
-                        {% endblock navbar %}
-                    </ul>
-
+<div class="wrapper">
+    <header>
+        {% block top_navbar %}
+            <nav class="navbar">
+                <a class="navbar-brand" href="{% url 'pizza:pizza_list' %}">PizzeriaNapoli</a>
+                <a href="{% url 'blog:home' %}">Домашняя</a>
+                <a href="{% url 'blog:reviews' %}">Отзывы</a>
+                <div class="dropdown ">
+                    <select onchange="if (this.value) window.location.href=this.value">
+                        <option value="">О компании</option>
+                        <option value="{% url 'blog:about_company' %}">О компании</option>
+                        <option value="{% url 'blog:news_list' %}">Новости</option>
+                        <option value="{% url 'blog:faq_list' %}">ЧАВО</option>
+                        <option value="{% url 'blog:promo_list' %}">Промокоды</option>
+                        <option value="{% url 'blog:vacancy' %}">Вакансии</option>
+                        <option value="{% url 'blog:employee' %}">Сотрудники</option>
+                    </select>
                 </div>
-            </div>
-        </nav>
 
-    {% endblock top_navbar %}
-</header>
+                {% if request.user.is_staff %}
+                    <a href="{% url 'pizza:order_list' %}">Заказы</a>
+                {% endif %}
 
-<main>
-    {% block content %}{% endblock %}
-</main>
+                <div class="push">
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'registration:user_profile' %}">Welcome {{ request.user }}</a>
+                        <a href="{% url 'pizza:view_cart' %}">Корзина</a>
+                    {% else %}
+                        <a href="{% url 'registration:login' %}">Login/register</a>
+                    {% endif %}
+                </div>
+                {% block navbar %}
+                {% endblock navbar %}
+            </nav>
 
-<footer>
-    <div>
-        <p><b>&copy; 2024 PizzeriaNapoli</b></p>
-    </div>
-</footer>
+        {% endblock top_navbar %}
+    </header>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div>
+            <p><b>&copy; 2024 PizzeriaNapoli</b></p>
+        </div>
+    </footer>
+</div>
+
 </body>
 </html>

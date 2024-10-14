@@ -1,0 +1,13 @@
+/* Custom h1 Style */
+h1{
+    position: relative;
+    width: max-content;
+}
+h1 img {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1.5rem;
+    height: auto;
+}

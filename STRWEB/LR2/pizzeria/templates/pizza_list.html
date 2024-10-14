@@ -1,9 +1,16 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+
+    <link rel="stylesheet" href="{% static 'css/pizzalist.css' %}">
+    
+{% endblock %}
 
 {% block content %}
 
     <div itemscope itemtype="https://schema.org/ItemList">
-        <h1>Наши Пиццы</h1>
+        <h1>Наши Пиццы <img src="{% static 'pizza-svgrepo-com.svg' %}"></h1>
         <form method="get">
             <div>
                 <div>
@@ -28,28 +35,27 @@
             </div>
         </form>
 
-        <div>
+        <div class="card-container">
             {% for pizza in pizzas %}
-                <div itemscope itemtype="https://schema.org/MenuItem">
-                    <div>
-                        <div>
-                            <h5 itemprop="name" align="center">{{ pizza.name }}</h5>
-                            <p><strong>Цена:</strong> $
-                            <div itemprop="price">{{ pizza.price }}</div>
-                            </p>
-                            {% if pizza.sauce %}
-                                <p><strong>Соус:</strong> {{ pizza.sauce }}</p>
-                            {% endif %}
-                            {% if pizza.image %}
-                                <img itemprop="image" src="{{ pizza.image.url }}" alt="{{ pizza.name }}">
-                            {% endif %}
+                <div class="card-main" itemscope itemtype="https://schema.org/MenuItem">
 
-                            {% if request.user.is_authenticated %}
-                                <a href="{% url 'pizza:pizza_detail' pizza.id %}">Подробнее</a>
-                                <a href="{% url 'pizza:order_pizza' pizza.id %}">Заказать</a>
-                            {% endif %}
-                        </div>
+                    <h3 class="card-title" itemprop="name">{{ pizza.name }}</h3>
+
+                    {% if pizza.image %}
+                        <img itemprop="image" src="{{ pizza.image.url }}" alt="{{ pizza.name }}">
+                    {% endif %}
+                    <div class="card-description">
+                        <span itemprop="price">{{ pizza.price }}</span>
+                        <span><strong>Цена:</strong> $ </span>
+
+                        {% if pizza.sauce %}
+                            <p><strong>Соус:</strong> {{ pizza.sauce }}</p>
+                        {% endif %}
                     </div>
+                    {% if request.user.is_authenticated %}
+                        <a class="card-link" href="{% url 'pizza:pizza_detail' pizza.id %}">Подробнее</a>
+                        <a class="card-link" href="{% url 'pizza:order_pizza' pizza.id %}">Заказать</a>
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>

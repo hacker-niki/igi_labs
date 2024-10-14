@@ -1,0 +1,76 @@
+/* General Container Styles */
+form {
+    display: flex;
+    max-width: 400px; /* Max width for the form */
+    margin: 0 auto; /* Center the form */
+    padding: 20px; /* Padding inside the form */
+    background-color: #fff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+form div {
+    display: flex;
+    flex-direction: column; /* Align elements in a column */
+    align-items: stretch; /* Stretch elements to fill available space */
+}
+
+/* Link Styles */
+h5 a {
+    color: #007bff; /* Blue color for the link */
+    text-decoration: none; /* No underline */
+}
+
+h5 a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Form Element Styles */
+input[type="submit"] {
+    width: 100%; /* Full width for the submit button */
+    padding: 10px; /* Padding inside the button */
+    background-color: #5cb85c; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 1rem; /* Font size */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+input[type="submit"]:hover {
+    background-color: #4cae4c; /* Darker green on hover */
+}
+
+/* Form Field Styles */
+form p {
+    margin: 15px 0; /* Space between form fields */
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"] {
+    width: 100%; /* Full width for input fields */
+    padding: 10px; /* Padding inside input fields */
+    margin-bottom: 15px; /* Space below input fields */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding in width */
+    height: 40px; /* Set a consistent height for fields */
+}
+
+/* Error List Styles */
+.errorlist {
+    list-style: none;
+    color: #d9534f; /* Red color for error messages */
+    margin: 10px 0; /* Space above and below the error list */
+    padding: 10px; /* Padding inside the error list */
+    background-color: #f2dede; /* Light red background */
+    border: 1px solid #d9534f; /* Border color matching error text */
+    border-radius: 5px; /* Rounded corners */
+    font-weight: bold; /* Bold text for visibility */
+}
+
+.errorlist.nonfield {
+    margin-bottom: 15px; /* Space below non-field errors */
+}

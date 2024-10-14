@@ -1,18 +1,26 @@
 {% extends 'form_base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
 
 {% block form %}
 
-    <h1 >Login</h1>
-    <h5 >
+    <h1>Login</h1>
+    <h5>
         <a href="{% url 'registration:create_account' %}">
             or create an account
         </a>
     </h5>
 
     <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Login">
+        <div>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Login">
+        </div>
     </form>
 
 {% endblock form %}

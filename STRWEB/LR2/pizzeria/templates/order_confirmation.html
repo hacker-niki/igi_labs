@@ -2,7 +2,7 @@
 
 {% block content %}
     <div>
-        <h1>Заказ подтвержден</h1>
+        <h1>Заказ подтвержден <img src="{% static 'pizza-svgrepo-com.svg' %}"></h1>
 
         <p>Вы успешно заказали пиццу: {{ order.pizza.name }}.</p>
         <p>Количество: {{ order.quantity }}</p>
