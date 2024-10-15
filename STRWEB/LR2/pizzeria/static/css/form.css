@@ -1,7 +1,8 @@
 /* General Container Styles */
 form {
+    justify-content: center;
     display: flex;
-    max-width: 400px; /* Max width for the form */
+    max-width: 40%; /* Max width for the form */
     margin: 0 auto; /* Center the form */
     padding: 20px; /* Padding inside the form */
     background-color: #fff; /* White background */
@@ -26,7 +27,8 @@ h5 a:hover {
 }
 
 /* Form Element Styles */
-input[type="submit"] {
+input[type="submit"],
+button[type="submit"]{
     width: 100%; /* Full width for the submit button */
     padding: 10px; /* Padding inside the button */
     background-color: #5cb85c; /* Button color */
@@ -44,7 +46,7 @@ input[type="submit"]:hover {
 
 /* Form Field Styles */
 form p {
-    margin: 15px 0; /* Space between form fields */
+    margin: -1px 0; /* Space between form fields */
 }
 
 form input[type="text"],
