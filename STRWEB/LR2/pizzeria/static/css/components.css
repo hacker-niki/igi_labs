@@ -11,21 +11,27 @@
 }
 
 .card, .card-main {
+    display: flex;
+    flex-direction: column;
+    position: relative;
     background-color: var(--card-bg-color);
     border: 1px solid var(--card-border-color);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: var(--box-shadow);
     text-align: center;
-    padding: 20px;
+    padding: 20px 20px 50px;
     transition: height var(--animation-duration), background-color var(--animation-duration);
+    margin-bottom: 20px;
 }
 
 .card-main img {
     transition: clip-path var(--animation-duration) ease, transform var(--animation-duration) ease, border-radius var(--animation-duration) ease;
-    width: 100%;
+    width: 350px;
     height: auto;
     display: block;
+    align-self: center;
+    border-radius: 10%;
 }
 
 .card-main:hover img {
@@ -39,9 +45,10 @@
     box-shadow: var(--big-box-shadow);
 }
 
-.card, .card-main img {
+.card img {
     max-width: 100%;
     height: auto;
+    display: block;
     border-radius: 10px;
 }
 
@@ -55,7 +62,10 @@
 
 .card-link {
     display: inline-block;
-    margin-top: 10px;
+    position: absolute;
+    right: auto;
+    bottom: 1%;
+    /*margin-top: auto;*/
     padding: 10px 15px;
     border: 1px solid var(--primary-bg-color);
     border-radius: var(--border-radius);
@@ -80,4 +90,26 @@
 /* Optional hover styles */
 .dropdown select:hover {
     background-color: #444; /* Change background on hover */
+}
+
+.button {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: var(--gap);
+    transition: background-color var(--animation-duration);
+}
+
+.button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+.link {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.link:hover {
+    color: var(--link-hover-color);
 }

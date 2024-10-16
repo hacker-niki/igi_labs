@@ -1,19 +1,23 @@
 {% extends 'base_blog.html' %}
 {% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+{% endblock %}
 {% block content %}
-    <div>
-        <h1>Новости <img src="{% static 'pizza-svgrepo-com.svg' %}"></h1>
-        <ul>
+    <div class="container">
+        <h1 class="news-header">Новости <img class="news-icon" src="{% static 'pizza-svgrepo-com.svg' %}"
+                                             alt="Pizza Icon"></h1>
+        <div class="card-container">
             {% for post in posts %}
-                <li>
-                    <h2>{{ post.title }}</h2>
+                <div class="card">
                     {% if post.image %}
                         <img src="{{ post.image.url }}" alt="{{ post.title }}">
                     {% endif %}
-                    <p>{{ post.content|truncatewords:15  }}</p>
-                            <a href="{% url 'blog:news_post' post.id %}">Читать далее</a>
-                </li>
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-description">{{ post.content }}</p>
+                    <a class="card-link" href="{% url 'blog:news_post' post.id %}">Читать далее</a>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     </div>
 {% endblock %}

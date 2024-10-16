@@ -1,25 +1,32 @@
 {% extends 'base_blog.html' %}
 {% load static %}
-
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/aboutblog.css' %}">
+{% endblock %}
 {% block content %}
-    <div>
-        <h1>О компании <img src="{% static 'pizza-svgrepo-com.svg' %}"></h1>
-        <p>Добро пожаловать в нашу пиццерию! Мы специализируемся на приготовлении вкуснейших пицц и итальянских
-            блюд.</p>
+    <div class="container">
+        <div class="company-info">
+            <h1 class="company-title">О компании <img src="{% static 'pizza-svgrepo-com.svg' %}" class="company-icon">
+            </h1>
+            <p class="company-description">Добро пожаловать в нашу пиццерию! Мы специализируемся на приготовлении
+                вкуснейших пицц и итальянских блюд.</p>
+        </div>
+        <video controls class="company-video">
+            <source src="{% static 'video.webm' %}" type="video/webm"/>
+        </video>
+        <section class="sertificate">
+
+        </section>
+
+        <h2 class="history-title">История пиццерии</h2>
+        <p class="history-description">Наша пиццерия была основана в 2005 году двумя братьями-пекарями из Неаполя. С тех
+            пор мы радуем наших клиентов ароматными итальянскими блюдами.</p>
+        <h2 class="specialization-title">Специализация</h2>
+        <p class="specialization-description">Мы гордимся нашими оригинальными рецептами и использованием только свежих
+            ингредиентов. Попробуйте нашу пиццу по-неаполитански или пасту аль-денте!</p>
+        <h2 class="contact-title">Реквизиты</h2>
+        <p class="contact-info">Адрес: ул. Пиццерная, д. 10, г. Милан</p>
+        <p class="contact-info">Телефон: +123 456 7890</p>
+        <p class="contact-info">Email: info@pizzeria.com</p>
     </div>
-    <img src="{% static 'logo.png' %}" alt="Логотип" width="3   0%" height="auto">
-    <video controls width="500">
-        <source src="{% static 'video.webm' %}" type="video/webm"/>
-    </video>
-    <img src="{% static 'pizzeria_certificate.png' %}" alt="Сертификат">
-    <h2>История пиццерии</h2>
-    <p>Наша пиццерия была основана в 2005 году двумя братьями-пекарями из Неаполя. С тех пор мы радуем наших клиентов
-        ароматными итальянскими блюдами.</p>
-    <h2>Специализация</h2>
-    <p>Мы гордимся нашими оригинальными рецептами и использованием только свежих ингредиентов. Попробуйте нашу пиццу
-        по-неаполитански или пасту аль-денте!</p>
-    <h2>Реквизиты</h2>
-    <p>Адрес: ул. Пиццерная, д. 10, г. Милан</p>
-    <p>Телефон: +123 456 7890</p>
-    <p>Email: info@pizzeria.com</p>
 {% endblock %}

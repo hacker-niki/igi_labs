@@ -1,0 +1,26 @@
+.card-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Количество строк */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0; /* Убираем отступы */
+}
+
+.post-image {
+    max-width: 10%; /* Responsive */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Prevents inline spacing issues */
+    margin: 10px 0; /* Add some margin if necessary */
+}
+
+.article-content {
+    column-count: 2; /* Number of columns */
+    column-gap: 20px; /* Space between columns */
+}
+
+@media (max-width: 768px) {
+    .article-content {
+        column-count: 1; /* Switch to a single column on small screens */
+    }
+}

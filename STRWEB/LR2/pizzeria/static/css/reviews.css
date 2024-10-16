@@ -1,3 +1,13 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-review{
+    width: 70%;
+    align-self: center;
+}
+
 form {
     margin-top: 20px; /* Space above the form */
 }
@@ -39,7 +49,7 @@ h4 {
 
 time {
     font-size: 0.9rem; /* Smaller font for date */
-    color: #777; /* Gray color for date */
+    color: var(--text-color-muted); /* Gray color for date */
 }
 
 /* Link Styles */

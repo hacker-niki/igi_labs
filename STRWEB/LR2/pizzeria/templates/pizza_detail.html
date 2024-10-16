@@ -1,26 +1,29 @@
 {% extends "base.html" %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/pizzaabout.css' %}">
+{% endblock %}
+
 
 {% block content %}
-    <div>
-        <div>
-            <div>
-                <div>
-                    <h5 align="center">{{ pizza.name }}</h5>
-                    <p><strong>Цена:</strong> ${{ pizza.price }}</p>
-                    {% if pizza.sauce %}
-                        <p><strong>Соус:</strong> {{ pizza.sauce }}</p>
-                    {% endif %}
-                    {% if pizza.image %}
-                        <img src="{{ pizza.image.url }}" alt="{{ pizza.name }}">
-                    {% endif %}
-                    {% if request.user.is_staff %}
-                        <div align="center">
-                            <a href="{% url 'pizza:pizza_edit' pizza.id %}">Редактировать</a>
-                        </div>
-                    {% endif %}
-                    <a href="{% url 'pizza:order_pizza' pizza.id %}">Заказать</a>
-                </div>
-            </div>
+
+<div class="pizza-container">
+    <h2 class="pizza-name">{{ pizza.name }}</h2>
+    <p class="pizza-price"><strong>Цена:</strong> ${{ pizza.price }}</p>
+    {% if pizza.sauce %}
+        <p class="pizza-sauce"><strong>Соус:</strong> {{ pizza.sauce }}</p>
+    {% endif %}
+    {% if pizza.image %}
+        <img src="{{ pizza.image.url }}" alt="{{ pizza.name }}" class="pizza-image">
+    {% endif %}
+    {% if request.user.is_staff %}
+        <div class="edit-link">
+            <a href="{% url 'pizza:pizza_edit' pizza.id %}">Редактировать</a>
         </div>
+    {% endif %}
+    <div class="order-link">
+        <a href="{% url 'pizza:order_pizza' pizza.id %}">Заказать</a>
     </div>
+</div>
+
 {% endblock %}

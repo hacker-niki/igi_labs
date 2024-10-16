@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/test.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Styled Tables and Elements</title>
+</head>
+<body>
+<header>
+    <h1>Styled Tables and Elements</h1>
+</header>
+
+<main>
+    <table class="styled-table">
+        <caption>Example Table</caption>
+        <thead>
+        <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+            <th>Header 3</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Data 1</td>
+            <td>Data 2</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Data 3</td>
+            <td>Data 4</td>
+            <td>Data 5</td>
+        </tr>
+        <tr>
+            <td>Data 3</td>
+            <td>Data 4</td>
+            <td>Data 5</td>
+        </tr>
+        <tr>
+            <td>Data 3</td>
+            <td>Data 4</td>
+            <td>Data 5</td>
+        </tr>
+        <tr>
+            <td>Data 3</td>
+            <td>Data 4</td>
+            <td>Data 5</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <article>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <q lang="fr">Ceci est une citation</q>.</p>
+    </article>
+
+    <form>
+        <input type="text" placeholder="Enter text" required>
+        <input type="number" min="1" max="10" value="5">
+        <input type="checkbox" checked>
+        <button type="button">Submit</button>
+    </form>
+
+    <ul class="styled-list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+</main>
+</body>
+</html>

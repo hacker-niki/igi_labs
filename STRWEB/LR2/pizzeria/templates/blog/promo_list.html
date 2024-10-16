@@ -1,34 +1,35 @@
 {% extends 'base_blog.html' %}
 {% load static %}
 
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/promo.css' %}">
+{% endblock %}
+
 {% block content %}
-    <div>
-        <h1>Промокоды <img src="{% static 'pizza-svgrepo-com.svg' %}"></h1>
-        <ul>
-            {% for promo in promos %}
-                {% if promo.is_active %}
-                    <li>
-                        <div>
-                            <h4>Код {{ promo.code }} - скидка {{ promo.discount }}%</h4>
-                        </div>
-                    </li>
-
-                {% endif %}
-            {% endfor %}
-        </ul>
-        <h4>Неактивные промокоды:</h4>
-        <ul>
-            {% for promo in promos %}
-
-                {% if not promo.is_active %}
-                    <li>
-                        <div>
-                            <h4>Код {{ promo.code }} - скидка {{ promo.discount }}%</h4>
-                        </div>
-                    </li>
-
-                {% endif %}
-            {% endfor %}
-        </ul>
-    </div>
+<div class="promo-container">
+    <h1 class="promo-header">Промокоды <img class="promo-icon" src="{% static 'pizza-svgrepo-com.svg' %}" alt="Icon"></h1>
+    <ul class="promo-list">
+        {% for promo in promos %}
+            {% if promo.is_active %}
+                <li class="promo-item active">
+                    <div class="promo-card">
+                        <h4 class="promo-code">Код {{ promo.code }} - скидка {{ promo.discount }}%</h4>
+                    </div>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <h4 class="inactive-header">Неактивные промокоды:</h4>
+    <ul class="promo-list">
+        {% for promo in promos %}
+            {% if not promo.is_active %}
+                <li class="promo-item inactive">
+                    <div class="promo-card">
+                        <h4 class="promo-code">Код {{ promo.code }} - скидка {{ promo.discount }}%</h4>
+                    </div>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

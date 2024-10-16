@@ -7,20 +7,20 @@
 {% endblock %}
 
 {% block form %}
+    <div class="container">
+        <h1>Login</h1>
+        <h5>
+            <a href="{% url 'registration:create_account' %}">
+                or create an account
+            </a>
+        </h5>
 
-    <h1>Login</h1>
-    <h5>
-        <a href="{% url 'registration:create_account' %}">
-            or create an account
-        </a>
-    </h5>
-
-    <form method="POST">
-        <div>
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Login">
-        </div>
-    </form>
-
+        <form method="POST">
+            <div>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Login">
+            </div>
+        </form>
+    </div>
 {% endblock form %}

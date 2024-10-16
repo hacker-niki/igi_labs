@@ -1,0 +1,42 @@
+
+.header {
+    text-align: center;
+    margin-bottom: var(--gap);
+}
+
+.logo {
+    max-width: 150px; /* Adjust size as needed */
+}
+
+.news-section {
+    background-color: var(--hover-card-bg-color);
+    padding: 20px;
+    border: 1px solid var(--card-border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--big-box-shadow);
+    margin-bottom: var(--gap);
+    position: relative;
+}
+
+.promo {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.partners {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gap);
+}
+
+.partner-logo {
+    max-width: 100px; /* Adjust based on your design */
+    margin: 10px;
+    border-radius: 50%;
+    transition: transform var(--animation-duration);
+}
+
+.partner-logo:hover {
+    transform: scale(1.1);
+}

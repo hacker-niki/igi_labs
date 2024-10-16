@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <div>
+    <div class="container">
         <h1>Отзывы <img src="{% static 'pizza-svgrepo-com.svg' %}"></h1>
         {% if user.is_authenticated %}
             <h2>Оставить отзыв</h2>
@@ -21,16 +21,18 @@
         {% else %}
             <p>Пожалуйста <a href="{% url 'registration:login' %}">залогиньтесь</a> чтобы оставить отзыв.</p>
         {% endif %}
-
-        <div class="card-list-container">
-            {% for review in reviews %}
-                <div class="card">
-                    <h4 class="card-title">{{ review.title }} от {{ review.user_name }}</h4>
-                    <p class="card-description">{{ review.content|truncatewords:20 }}</p>
-                    <time datetime="{{ review.added_date }}">{{ review.added_date }}</time>
-                    {#        <a href="{% url 'blog:post_detail' post.pk %}">Читать далее</a>#}
-                </div>
-            {% endfor %}
+{#    <div style=""#}
+        <div class="container-review">
+            <div class="card-list-container">
+                {% for review in reviews %}
+                    <div class="height-100 card">
+                        <h4 class="card-title">{{ review.title }} от {{ review.user_name }}</h4>
+                        <p class="card-description">{{ review.content|truncatewords:20 }}</p>
+                        <time datetime="{{ review.added_date }}">{{ review.added_date }}</time>
+                        {#        <a href="{% url 'blog:post_detail' post.pk %}">Читать далее</a>#}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

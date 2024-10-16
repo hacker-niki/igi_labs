@@ -1,0 +1,50 @@
+.promo-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.promo-header {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.promo-icon {
+    width: 50px;
+    vertical-align: middle;
+}
+
+.promo-list {
+    list-style: none;
+    padding: 0;
+}
+
+.promo-item {
+    margin-bottom: 20px;
+}
+
+.promo-card {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: var(--box-shadow);
+    transition: transform var(--animation-duration), box-shadow var(--animation-duration);
+}
+
+.promo-card:hover {
+    transform: scale(1.05);
+    box-shadow: var(--big-box-shadow);
+}
+
+.promo-code {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.inactive-header {
+    margin-top: 30px;
+    font-size: 1.5em;
+    color: #999;
+}

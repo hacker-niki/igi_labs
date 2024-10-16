@@ -49,6 +49,9 @@ def review_list(request):
     reviews = Review.objects.all().order_by('added_date')
     return render(request, 'blog/reviews.html', {'reviews': reviews})
 
+def test(request):
+    return render(request, 'blog/test.html')
+
 
 def vacancy_view(request):
     vacancies = Vacancy.objects.all()

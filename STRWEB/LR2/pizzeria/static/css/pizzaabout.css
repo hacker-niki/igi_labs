@@ -1,0 +1,71 @@
+.pizza-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px; /* Set a maximum width for the container */
+    width: max-content;
+    margin: 20px auto; /* Center the container */
+    padding: 20px; /* Add padding */
+    border: 2px solid #ff6347; /* Tomato border color */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #fff; /* White background */
+    position: relative; /* Position context for pseudo-elements */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+.pizza-container::before {
+    content: ""; /* Empty content for the pseudo-element */
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: rgba(255, 99, 71, 0.1); /* Light tomato color for background */
+    border-radius: 12px; /* Slightly larger radius than the container */
+    z-index: -1; /* Send to back */
+}
+
+.pizza-name {
+    font-size: 26px; /* Font size for the pizza name */
+    margin-bottom: 10px; /* Space below the name */
+    color: #ff6347; /* Tomato color */
+    text-align: center; /* Center the name */
+}
+
+.pizza-price,
+.pizza-sauce {
+    font-size: 18px; /* Font size for price and sauce */
+    margin: 5px 0; /* Space around these paragraphs */
+    text-align: center; /* Center the text */
+}
+
+.pizza-image {
+    align-self: center;
+    height: 300px;
+    width: auto;
+    /*max-width: 100%; !* Ensure the image is responsive *!*/
+    /*height: auto; !* Maintain aspect ratio *!*/
+    border-radius: 8px; /* Rounded corners for the image */
+    margin: 15px 0; /* Space above and below the image */
+    border: 2px solid #ff6347; /* Tomato border around the image */
+}
+
+.edit-link,
+.order-link {
+    margin: 10px 0; /* Space around the links */
+    text-align: center; /* Center align links */
+}
+
+.edit-link a,
+.order-link a {
+    text-decoration: none; /* Remove underline from links */
+    color: #ffffff; /* White text color */
+    background-color: #ff6347; /* Tomato background color */
+    padding: 10px 15px; /* Padding for buttons */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.edit-link a:hover,
+.order-link a:hover {
+    background-color: #e55347; /* Darker tomato color on hover */
+}

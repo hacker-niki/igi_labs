@@ -1,14 +1,30 @@
 :root {
-    --primary-bg-color: #333;
-    --primary-text-color: #fff;
-    --card-bg-color: #fff;
-    --card-border-color: #ccc;
-    --hover-bg-color: #555;
-    --hover-card-bg-color: #f0f0f0;
-    --gap: 20px;
-    --border-radius: 5px;
-    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    --big-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.1);
-    --font-family: Roboto;
-    --animation-duration: 1s ;
+    --primary-bg-color: #333; /* Background color for the main layout */
+    --primary-text-color: #fff; /* Main text color */
+    --secondary-bg-color: #444; /* Darker background for sections */
+    --card-bg-color: #fff; /* Background color for cards */
+    --card-border-color: #ccc; /* Border color for cards */
+    --hover-bg-color: #555; /* Background color on hover for elements */
+    --hover-card-bg-color: #f0f0f0; /* Background color for cards on hover */
+
+    --text-color-muted: #777;
+    --link-color: #1e90ff; /* Color for links */
+    --link-hover-color: #1c86ee; /* Link color on hover */
+
+    --button-bg-color: #007bff; /* Background color for buttons */
+    --button-text-color: #fff; /* Text color for buttons */
+    --button-hover-bg-color: #0056b3; /* Button background color on hover */
+
+    --warning-color: #ffcc00; /* Warning messages color */
+    --error-color: #e74c3c; /* Error messages color */
+
+    --success-color: #28a745; /* Success messages color */
+
+    --gap: 20px; /* Space between elements */
+    --border-radius: 5px; /* Border radius for elements */
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for cards */
+    --big-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.1); /* Larger shadow for prominent elements */
+
+    --font-family: 'Roboto', sans-serif; /* Base font family */
+    --animation-duration: 1s; /* Duration for transitions */
 }

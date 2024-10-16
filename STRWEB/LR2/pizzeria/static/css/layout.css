@@ -1,9 +1,17 @@
 * {
-    align-content: center;
+    /*align-content: center;*/
 }
 
-html, body {
+html {
     box-sizing: border-box;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: radial-gradient(circle, rgba(0, 180, 216, 0.5032213569021359) 0%, rgba(202, 240, 248, 0.4107843821122199) 77%, rgba(255, 255, 255, 0.36036421404499297) 100%) fixed;
+    /*box-sizing: border-box;*/
     height: 100%;
     padding: 0;
     margin: 0;
@@ -76,8 +84,7 @@ html, body {
 }
 
 .container {
-    width: 60%;
-
+    max-width: 90%;
     margin: 0 auto;
     padding: 20px;
 }
@@ -90,7 +97,9 @@ html, body {
 }
 
 .navbar-brand {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Размер шрифта */
+    font-family: 'Georgia', sans-serif; /* Замените на нужный шрифт */
+    letter-spacing: 0.1em; /* Настройка кернинга */
 }
 
 .wrapper {

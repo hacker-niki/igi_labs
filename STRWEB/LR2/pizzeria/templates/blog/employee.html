@@ -1,20 +1,25 @@
 {% extends 'base_blog.html' %}
 {% load static %}
 
-{% block content %}
-    <div>
-        <h1>Сотрудники <img src="{% static 'pizza-svgrepo-com.svg' %}"></h1>
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/employee.css' %}">
+{% endblock %}
 
-        <article>
+{% block content %}
+    <div class="container">
+        <h1>Сотрудники <img class="employee-icon" src="{% static 'pizza-svgrepo-com.svg' %}" alt="Icon"></h1>
+        <div class="card-container">
             {% for employee in workers %}
-                <section>
-                    <h2>{{ employee.name }}</h2>
-                    {% if employee.image %}
-                        <img src="{{ employee.image.url }}" alt="{{ employee.name }}">
-                    {% endif %}
-                    <p>{{ employee.description }}</p>
-                </section>
+                <div class="card">
+                    <h2 class="card-title">{{ employee.name }}</h2>
+                    <div style="display: flex">
+                        <p class="card-description">{{ employee.description }}</p>
+                        {% if employee.image %}
+                            <img src="{{ employee.image.url }}" alt="{{ employee.name }}">
+                        {% endif %}
+                    </div>
+                </div>
             {% endfor %}
-        </article>
+        </div>
     </div>
 {% endblock %}

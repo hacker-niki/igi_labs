@@ -1,18 +1,20 @@
 {% extends 'base_blog.html' %}
 {% load static %}
 
-{% block content %}
-    <div>
-        <h1>Вакансии <img src="{% static 'pizza-svgrepo-com.svg' %}"></h1>
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/vacancy.css' %}">
+{% endblock %}
 
-        <dl>
-            {% for vacancy in vacancies %}
-                <li>
-                    <p>{{ vacancy.description }}</p>
-                </li>
-                <br>
-                <hr>
-            {% endfor %}
-        </dl>
-    </div>
+{% block content %}
+<div class="container">
+    <h1>Вакансии  <img src="{% static 'pizza-svgrepo-com.svg' %}" alt="Pizza Icon"></h1>
+    <ul class="vacancy-list">
+        {% for vacancy in vacancies %}
+            <li class="vacancy-item">
+                <p class="vacancy-description">{{ vacancy.description }}</p>
+                <hr class="vacancy-divider">
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

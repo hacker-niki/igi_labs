@@ -1,0 +1,60 @@
+/* Company Info Styles */
+.company-info {
+    margin-bottom: var(--gap);
+}
+
+.company-title {
+    font-size: 2.5em;
+    margin-bottom: var(--gap);
+    display: flex;
+    align-items: center;
+}
+
+.company-icon {
+    margin-left: 10px; /* Space between title and icon */
+    width: 40px; /* Fixed width for the icon */
+    height: auto;
+}
+
+.company-description {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: var(--gap);
+}
+
+/* Video Styles */
+.company-video {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: var(--gap);
+}
+
+/* Section Headers */
+.history-title, .specialization-title, .contact-title {
+    font-size: 2em;
+    margin-top: var(--gap);
+    margin-bottom: var(--gap);
+    color: var(--primary-text-color);
+}
+
+/* Section Descriptions */
+.history-description, .specialization-description, .contact-info {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: var(--gap);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .company-title {
+        font-size: 2em; /* Adjust size for smaller screens */
+    }
+
+    .history-title, .specialization-title, .contact-title {
+        font-size: 1.5em; /* Adjust size for smaller screens */
+    }
+
+    .company-description, .history-description, .specialization-description, .contact-info {
+        font-size: 1em; /* Adjust size for smaller screens */
+    }
+}

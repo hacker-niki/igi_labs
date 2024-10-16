@@ -1,0 +1,113 @@
+html {
+    --bg: rgba(202, 240, 248, 1);
+}
+
+@property --top {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 0%;
+}
+
+@property --open {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 0%;
+}
+
+@keyframes dance {
+    0% {
+        --top: 0%;
+        --open: 0%;
+        transform-origin: 60% 90%;
+    }
+    25% {
+        --top: 10%;
+        transform-origin: 60% 90%;
+        transform: translate(-50%, 0%) rotate(3deg);
+    }
+    33% {
+        --open: 8%;
+    }
+    50% {
+        --top: 0%;
+        --open: 0%;
+        transform: translate(-50%, 0%) rotate(0deg);
+    }
+    75% {
+        --top: 7%;
+        --open: 10%;
+        transform-origin: 40% 90%;
+        transform: translate(-50%, 0%) rotate(-3deg);
+    }
+    100% {
+        --top: 0%;
+        --open: 0%;
+    }
+}
+
+
+.pizza {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /*align-self: center;*/
+    animation: dance 2s linear infinite;
+    transform-origin: 60% 90%;
+    transform: translate(-50%, 0%) rotate(2deg);
+    --cheese: #fe3;
+    --crust: #ea5;
+    --crust-dark: #d94;
+    --pepperoni: #d12;
+    --note: purple;
+    --top: 0%;
+    --open: 0%;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    width: 150px;
+    height: 200px;
+    /*position: absolute;*/
+    /*display: flex;*/
+    /*bottom: -10vmin;*/
+    box-sizing: border-box;
+    left: 50%;
+    background: var(--bg);
+    z-index: -1;
+    background-image: /* crop */ conic-gradient(at 50% var(--top), var(--bg) 155deg, transparent 0 205deg, var(--bg) 0),
+        /* topings */ radial-gradient(circle, var(--pepperoni) 50%, transparent 0),
+    radial-gradient(circle, var(--pepperoni) 45%, transparent 0),
+    radial-gradient(circle, var(--pepperoni) 50%, transparent 0),
+        /* cheese and crust */ radial-gradient(var(--cheese) 30%, transparent 0),
+    radial-gradient(var(--cheese) 50%, transparent 0),
+    radial-gradient(var(--cheese) 30%, transparent 0),
+    radial-gradient(var(--pepperoni) 30%, transparent 0),
+    radial-gradient(var(--pepperoni) 50%, transparent 0),
+    radial-gradient(var(--pepperoni) 30%, transparent 0),
+    radial-gradient(circle at 50% var(--top), var(--cheese) 60%, var(--crust) 0, var(--crust-dark) 70%, transparent 0);
+    background-size: /* crop */ 100% 100%,
+        /* topings */ 30% 14%,
+    30% 24%,
+    30% 24%,
+        /* cheese and crust */ 60% 24%,
+    80% 30%,
+    70% 30%,
+    60% 24%,
+    80% 30%,
+    70% 30%,
+    100% 100%;
+    background-position: /* crop */ 0 0,
+        /* topings */ calc(32% + var(--top) / 10) calc(35% + var(--top) / 1.5),
+    60% calc(10% + var(--top)),
+    69% calc(50% + var(--top)),
+        /* cheese and crust */ 130% calc(56% + var(--top) / 1.75),
+    70% calc(57% + var(--top) / 1.75),
+    -20% calc(59% + var(--top) / 1.75),
+    145% calc(57% + var(--top) / 1.75),
+    67% calc(58% + var(--top) / 1.75),
+    -25% calc(60.5% + var(--top) / 1.75),
+    0 0;
+    background-repeat: no-repeat;
+    text-indent: 40vmin;
+    overflow: visible;
+    clip-path: polygon(0 0, 200% 0%, 200% 90%, 0 90%);
+}

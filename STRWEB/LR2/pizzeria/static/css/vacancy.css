@@ -1,0 +1,23 @@
+.vacancy-list {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove padding */
+    overflow: hidden; /* Clear floats */
+}
+
+.vacancy-item {
+    float: right; /* Allow items to float */
+    width: 100%; /* Full width for each item */
+    padding: 15px; /* Add padding */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.vacancy-description {
+    margin: 0; /* Remove default margin */
+}
+
+.vacancy-divider {
+    clear: both; /* Clear floats to prevent overlap */
+    margin: 10px 0; /* Space around the divider */
+    border: none; /* Remove default border */
+    border-top: 1px solid #eee; /* Custom divider style */
+}
